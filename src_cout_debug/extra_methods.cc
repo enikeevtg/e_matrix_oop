@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 void EMatrix::PrintMatrix() {
   std::cout << "\t\tprintMatrix() {" << std::endl;
 
@@ -15,3 +17,5 @@ void EMatrix::PrintMatrix() {
 
   std::cout << "\t\t}  // PrintMatrix()" << std::endl;
 }
+
+}  // namespace e_matrix

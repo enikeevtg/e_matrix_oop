@@ -5,6 +5,8 @@
 
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 class TestsEnvironment : public ::testing::Environment {
  public:
   enum EMatrixTypes {
@@ -42,4 +44,7 @@ class TestsEnvironment : public ::testing::Environment {
   static inline double* ut_det_arr_{nullptr};
 };
 
+}  // namespace e_matrix
+
 #endif  // E_MATRIXPLUS_TESTS_TESTS_ENV_H_
+

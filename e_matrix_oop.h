@@ -4,6 +4,8 @@
 #include <iostream>
 #include <stdexcept>
 
+namespace e_matrix {
+  
 #define EPS 1e-7
 
 class EMatrix {
@@ -51,5 +53,7 @@ class EMatrix {
   bool ExchangeCurrentRow(int row_col);
   void ReducingIterationStep(int row_col, double pivot);
 };
+
+}  // namespace e_matrix
 
 #endif  // E_MATRIXPLUS_E_MATRIX_OOP_H_

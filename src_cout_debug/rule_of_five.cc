@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 /// @brief Copy Constructor
 /// @param other
 EMatrix::EMatrix(const EMatrix& other)
@@ -115,3 +117,5 @@ EMatrix::~EMatrix() {
   std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
   std::cout << "}  //~EMatrix()" << std::endl;
 }
+
+}  // namespace e_matrix

@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixCalcComplementsTSuite, CalcComplementsThrow) {
   int i = GetParam();
   if (TestsEnvironment::ut_matr_arr_[i].get_rows() !=
@@ -98,3 +100,5 @@ TEST(EMatrixCalcComplementsTSuiteManual, CalcComplementsOk4x4) {
 
   EXPECT_TRUE(test_res_matrix.EqMatrix(test_ref_matrix));
 }
+
+}  // namespace e_matrix

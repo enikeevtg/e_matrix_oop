@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 /// @brief Checks matrices for equality with each other
 /// @param other
 /// @return Checking result
@@ -43,3 +45,5 @@ void EMatrix::MulNumber(const double num) {
     matrix_[0][i] *= num;
   }
 }
+
+}  // namespace e_matrix

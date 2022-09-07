@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 double** EMatrix::get_matrix() { return matrix_; }  // temp method
 
 /// @brief rows_ accessor
@@ -27,3 +29,5 @@ void EMatrix::set_cols(int cols) {
 
   SetDimensions(rows_, cols);
 }
+
+}  // namespace e_matrix

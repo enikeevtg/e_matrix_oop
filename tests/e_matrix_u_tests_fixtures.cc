@@ -1,5 +1,7 @@
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 INSTANTIATE_TEST_SUITE_P(
     EMatrixUTests, EMatrixRuleOfFiveTSuite,
     testing::Range(0, TestsEnvironment::uform_matr_number_*
@@ -46,3 +48,5 @@ INSTANTIATE_TEST_SUITE_P(
     EMatrixUTests, EMatrixOperatorsOverloadsTSuite,
     testing::Range(0, TestsEnvironment::uform_matr_number_*
                           TestsEnvironment::kMatrTypesNumber));
+
+}  // namespace e_matrix

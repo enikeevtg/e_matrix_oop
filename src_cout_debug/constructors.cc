@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 /// @brief Default constructor
 EMatrix::EMatrix() {
   std::cout << "EMatrix() {" << std::endl;
@@ -34,3 +36,5 @@ EMatrix::EMatrix(int rows, int cols)
 
   std::cout << "}  // EMatrix(int rows, int cols)" << std::endl;
 }
+
+}  // namespace e_matrix

@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 void EMatrix::SetDimensions(int rows, int cols) {
   EMatrix buffer_matrix{rows, cols};
 
@@ -27,3 +29,5 @@ void EMatrix::PrintMatrix() noexcept {
     }
   }
 }
+
+}  // namespace e_matrix

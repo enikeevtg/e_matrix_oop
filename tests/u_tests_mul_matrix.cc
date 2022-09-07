@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixMulTSuite, MulMatrixThrowInvalidArgFirst) {
   int i = GetParam();
   EMatrix test_matrix;  // matrix_ = nullptr
@@ -62,3 +64,5 @@ TEST_P(EMatrixMulTSuite, MulMatrixUnityOk) {
     EXPECT_TRUE(TestsEnvironment::ut_matr_arr_[i].EqMatrix(test_matrix));
   }
 }
+
+}  // namespace e_matrix

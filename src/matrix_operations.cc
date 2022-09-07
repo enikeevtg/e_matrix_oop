@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 /// @brief Checks matrices for equality with each other
 /// @param other
 /// @return Checking result: equal - 1, not equal - 0
@@ -145,3 +147,5 @@ EMatrix EMatrix::InverseMatrix() {
 
   return result;
 }
+
+}  // namespace e_matrix

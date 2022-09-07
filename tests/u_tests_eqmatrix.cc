@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixEqMatrixTSuite, EqMatrixTrue) {
   int i = GetParam();
   EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
@@ -32,3 +34,5 @@ TEST_P(EMatrixEqMatrixTSuite, EqMatrixFalseCols) {
 
   EXPECT_FALSE(TestsEnvironment::ut_matr_arr_[i].EqMatrix(test_matrix));
 }
+
+}  // namespace e_matrix

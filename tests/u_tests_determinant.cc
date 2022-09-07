@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixDeterminantTSuite, DeterminantThrow) {
   int i = GetParam();
   if (TestsEnvironment::ut_matr_arr_[i].get_rows() !=
@@ -18,3 +20,5 @@ TEST_P(EMatrixDeterminantTSuite, DeterminantOk) {
               TestsEnvironment::ut_det_arr_[i]);
   }
 }
+
+}  // namespace e_matrix

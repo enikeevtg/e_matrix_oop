@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixAccessorsMutators, GetRowsOk) {
   int i = GetParam();
   EMatrix test_matrix(i, 1);
@@ -86,3 +88,5 @@ TEST_P(EMatrixAccessorsMutators, SetDimensionsOk) {
   EXPECT_EQ(test_matrix.get_rows(), i);
   EXPECT_EQ(test_matrix.get_cols(), i);
 }
+
+}  // namespace e_matrix

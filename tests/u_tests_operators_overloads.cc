@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixOperatorsOverloadsTSuite, BracesThrowNillIndices) {
   int i = GetParam();
 
@@ -31,3 +33,5 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, BracesOk) {
 
   EXPECT_DOUBLE_EQ(TestsEnvironment::ut_unity_matr_arr_[i % n](1, 1), 1.f);
 }
+
+}  // namespace e_matrix

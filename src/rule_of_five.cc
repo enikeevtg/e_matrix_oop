@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 /// @brief Copy constructor
 /// @param other
 EMatrix::EMatrix(const EMatrix& other) : EMatrix(other.rows_, other.cols_) {
@@ -34,3 +36,5 @@ EMatrix& EMatrix::operator=(EMatrix&& other) noexcept {
 EMatrix::~EMatrix() {
   DeleteMatrix();
 }
+
+}  // namespace e_matrix

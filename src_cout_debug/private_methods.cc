@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 void EMatrix::CreateMatrix() {
   std::cout << "\tCreateMatrix() {" << std::endl;
 
@@ -49,3 +51,5 @@ void EMatrix::SumOrSubMatrix(const EMatrix& other, int operation_select) {
     matrix_[0][i] += operation_select * other.matrix_[0][i];
   }
 }
+
+}  // namespace e_matrix

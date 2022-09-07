@@ -1,5 +1,7 @@
 #include "e_matrix_u_tests_environment.h"
 
+namespace e_matrix {
+
 TEST(ConstructorsTests, DefaultConstructor) {
   EMatrix test_matrix;
 
@@ -58,3 +60,5 @@ TEST(ConstructorsTests, ParametrizedConstructorOk4) {
   EXPECT_EQ(test_matrix.get_rows(), 100);
   EXPECT_EQ(test_matrix.get_cols(), 101);
 }
+
+}  // namespace e_matrix

@@ -1,5 +1,7 @@
 #include "e_matrix_u_tests_environment.h"
 
+namespace e_matrix {
+
 void TestsEnvironment::SetUp() {
   TestArraysMemAlloc();
   SetTestMatricesDimensions();
@@ -130,3 +132,5 @@ void TestsEnvironment::DeleteTestArray(EMatrix*& matrices_array) {
     matrices_array = nullptr;
   }
 }
+
+}  // namespace e_matrix

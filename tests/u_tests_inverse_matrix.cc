@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_fixtures.h"
 #include "e_matrix_u_tests_environment.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixInverseMatrixTSuite, InverseMatrixThrowNillMatrices) {
   int sz = GetParam();
   EMatrix test_matrix(sz, sz);
@@ -100,3 +102,5 @@ TEST(EMatrixInverseMatrixTSuiteManual, InverseMatrixOk4x4) {
 
   EXPECT_TRUE(test_res_matrix.EqMatrix(test_ref_matrix));
 }
+
+}  // namespace e_matrix

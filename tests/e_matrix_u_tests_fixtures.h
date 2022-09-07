@@ -5,6 +5,8 @@
 
 #include "e_matrix_u_tests_environment.h"
 
+namespace e_matrix {
+
 class EMatrixRuleOfFiveTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixAccessorsMutators : public ::testing::TestWithParam<int> {};
 
@@ -17,5 +19,7 @@ class EMatrixDeterminantTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixInverseMatrixTSuite : public ::testing::TestWithParam<int> {};
 
 class EMatrixOperatorsOverloadsTSuite : public ::testing::TestWithParam<int> {};
+
+}  // namespace e_matrix
 
 #endif  // E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURES_H_

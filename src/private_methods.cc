@@ -1,5 +1,7 @@
 #include "../e_matrix_oop.h"
 
+namespace e_matrix {
+
 /// @brief Matrix creation method
 void EMatrix::CreateMatrix() {
   size_t malloc_sz =
@@ -109,3 +111,5 @@ void EMatrix::ReducingIterationStep(int row_col, double pivot) {
   }
   Swap(tmp);
 }
+
+}  // namespace e_matrix

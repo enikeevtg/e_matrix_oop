@@ -1,6 +1,8 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
+namespace e_matrix {
+
 TEST_P(EMatrixRuleOfFiveTSuite, CopyConstructor) {
   int i = GetParam();
   EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
@@ -36,3 +38,5 @@ TEST_P(EMatrixRuleOfFiveTSuite, MoveAssignment) {
   EXPECT_EQ(test_matrix.get_cols(), 0);
   EXPECT_TRUE(test_matrix_res.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
 }
+
+}  // namespace e_matrix
