@@ -14,10 +14,10 @@ SRC_DIR = ./src/
 SRC = $(wildcard $(SRC_DIR)*.cc)
 
 MAN_TEST_DIR = ./man_tests/
-MAN_TEST_RUN = ./man_test_runner
+MAN_TEST_RUNER = ./man_test_runner
 EXECUTION_REPORT = execution_report.txt
 OPEN_TXT = open -e
-EXE = $(MAN_TEST_RUN) a.out
+EXE = $(MAN_TEST_RUNER) a.out
 
 # BUILD
 all:
@@ -30,10 +30,10 @@ lib: e_matrix_oop.a
 
 # SERVICE
 style:
-	find . -name *.h -o -name *.cc | xargs clang-format --style=google -n
+	find . -name "*.h" -o -name "*.cc" | xargs clang-format --style=google -n
 
 gost:
-	find . -name *.h -o -name *.cc | xargs clang-format --style=google -i
+	find . -name "*.h" -o -name "*.cc" | xargs clang-format --style=google -i
 
 clean:
 	$(RM) $(EXE)
@@ -41,7 +41,7 @@ clean:
 
 # DEVELOPING TESTS
 man:
-	$(CC) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUN)
-	@$(LEAKS) $(MAN_TEST_RUN) > $(EXECUTION_REPORT)
+	$(CC) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
+	@$(LEAKS) $(MAN_TEST_RUNER) > $(EXECUTION_REPORT)
 	$(OPEN_TXT) $(EXECUTION_REPORT)
-	@$(RM) $(MAN_TEST_RUN)
+	@$(RM) $(MAN_TEST_RUNER)
