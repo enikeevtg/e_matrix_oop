@@ -4,24 +4,23 @@
 #include <iostream>
 
 class EMatrix {
- private:
-  double** matrix_{nullptr};
-  int rows_{0};
-  int cols_{0};
-
  public:
   EMatrix();
   EMatrix(int rows, int cols);
   EMatrix(const EMatrix& other);
   ~EMatrix();
 
-  double** getMatrixPtr();
-  void matrixPrinting();
-  int getRows();
-  int getCols();
+  void PrintMatrix();
+  double** get_matrix();
+  int get_rows();
+  int get_cols();
 
  private:
-  void createMatrix();
+  double** matrix_{nullptr};
+  int rows_{0};
+  int cols_{0};
+
+  void CreateMatrix();
 };
 
 #endif  // E_MATRIXPLUS_E_MATRIX_OOP_H_
