@@ -13,6 +13,12 @@ void EMatrix::CreateMatrix() {
       matrix_[i] = start + i * cols_;
     }
   }
+
+  std::cout << "\t\tmatrix = " << this << std::endl;
+  std::cout << "\t\tmatrix.matrix_ = " << matrix_ << std::endl;
+  std::cout << "\t\tmatrix.rows_ = " << rows_ << std::endl;
+  std::cout << "\t\tmatrix.cols_ = " << cols_ << std::endl;
+
   PrintMatrix();
 
   std::cout << "\t}  // CreateMatrix()" << std::endl;
@@ -24,7 +30,14 @@ void EMatrix::DeleteMatrix() {
   if (matrix_ != nullptr) {
     operator delete[](matrix_);
     matrix_ = nullptr;
+    // rows_ = 0;
+    // cols_ = 0;
+    std::cout << "\t\tmatrix = " << this << std::endl;
+    std::cout << "\t\tmatrix.matrix_ = " << matrix_ << std::endl;
+    std::cout << "\t\tmatrix.rows_ = " << rows_ << std::endl;
+    std::cout << "\t\tmatrix.cols_ = " << cols_ << std::endl;
   }
+
 
   std::cout << "\t}  // DeleteMatrix()" << std::endl;
 }
