@@ -7,32 +7,32 @@ int main() {
   cout << "EMatrix matrix:" << endl;
   {
     EMatrix matrix;
-    cout << "matrix.matrix_: " << matrix.get_matrix() << endl
-         << "========================================================" << endl;
+    cout << "matrix.matrix_: " << matrix.get_matrix() << endl;
   }
+  cout << "========================================================" << endl;
 
   cout << endl << "EMatrix* matrix = new EMatrix:" << endl;
   {
     EMatrix* matrix = new EMatrix;
-    cout << "matrix.matrix_: " << matrix->get_matrix() << endl
-         << "========================================================" << endl;
+    cout << "matrix.matrix_: " << matrix->get_matrix() << endl;
     delete matrix;
   }
+  cout << "========================================================" << endl;
 
   cout << endl << "EMatrix matrix(2, 2):" << endl;
   {
     EMatrix matrix(2, 2);
-    cout << "matrix.matrix_: " << matrix.get_matrix() << endl
-         << "========================================================" << endl;
+    cout << "matrix.matrix_: " << matrix.get_matrix() << endl;
   }
+  cout << "========================================================" << endl;
 
   cout << endl << "EMatrix* matrix = new EMatrix(11, 11):" << endl;
   {
     EMatrix* matrix = new EMatrix(11, 11);
-    cout << "matrix.matrix_: " << matrix->get_matrix() << endl
-         << "========================================================" << endl;
+    cout << "matrix.matrix_: " << matrix->get_matrix() << endl;
     delete matrix;
   }
+  cout << "========================================================" << endl;
 
   cout << endl
        << "EMatrix matrix_src(5, 5) && matrix_src.matrixInlinePrinting():"

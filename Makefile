@@ -1,12 +1,13 @@
 .PHONY: all clean test e_matrix_oop.a
 
 # UTILITIES
-CC = g++
+CC = gcc
 LEAKS = leaks -atExit -- #
 RM = rm -rf
 
 # UTITLITIES OPTIONS
-CF = -Wall -Werror -Wextra
+CF = -Wall -Werror -Wextra -lstdc++
+STD = -std=c++17 -pedantic
 
 # FILENAMES
 TARGET = e_matrix_oop.a
@@ -41,7 +42,8 @@ clean:
 
 # DEVELOPING TESTS
 man:
-	$(CC) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
-	@$(LEAKS) $(MAN_TEST_RUNER) > $(EXECUTION_REPORT)
+	$(CC) $(CF) $(STD) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
+	@$(LEAKS) $(MAN_TEST_RUNER) 
+#	> $(EXECUTION_REPORT)
 #	$(OPEN_TXT) $(EXECUTION_REPORT)
 	@$(RM) $(MAN_TEST_RUNER)
