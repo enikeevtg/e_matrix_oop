@@ -46,8 +46,8 @@ EMatrix return_rvalue() {
 }
 
 void test_matrix_move_constructor() {
-  EMatrix dest;
-  dest = return_rvalue();
+  EMatrix dest = return_rvalue();
+  // dest = return_rvalue();
 }
 
 int main() {
