@@ -38,7 +38,5 @@ void EMatrix::DeleteMatrix() {
     std::cout << "\t\tmatrix.cols_ = " << cols_ << std::endl;
   }
 
-
   std::cout << "\t}  // DeleteMatrix()" << std::endl;
 }
-

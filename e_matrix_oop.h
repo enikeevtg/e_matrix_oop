@@ -15,7 +15,7 @@ class EMatrix {
   double** get_matrix();
   int get_rows();
   int get_cols();
-  
+
   EMatrix& operator=(const EMatrix& other);
   EMatrix& operator=(EMatrix&& other);
 
