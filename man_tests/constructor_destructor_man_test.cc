@@ -25,7 +25,7 @@ void test_matrix_new_11x11() {
   delete matrix;
 }
 
-void test_matrix_copy_condtructor() {
+void test_matrix_copy_constructor() {
   cout << endl
        << "EMatrix matrix_src(5, 5) && matrix_src.matrixInlinePrinting():"
        << endl;
@@ -38,6 +38,16 @@ void test_matrix_copy_condtructor() {
   matrix_src.PrintMatrix();
 
   EMatrix matrix_dest(matrix_src);
+}
+
+EMatrix return_rvalue() {
+  EMatrix return_matrix(3, 3);
+  return return_matrix;
+}
+
+void test_matrix_move_constructor() {
+  EMatrix dest;
+  dest = return_rvalue();
 }
 
 int main() {
@@ -53,7 +63,10 @@ int main() {
   // test_matrix_new_11x11();
   // cout << "========================================================" << endl;
 
-  test_matrix_copy_condtructor();
+  // test_matrix_copy_constructor();
+  // cout << "===================END===================" << endl;
+
+  test_matrix_move_constructor();
   cout << "===================END===================" << endl;
 
   return 0;
