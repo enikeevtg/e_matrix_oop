@@ -1,6 +1,6 @@
 #include "../e_matrix_oop.h"
 
-/// @brief default constructor
+/// @brief Default constructor
 EMatrix::EMatrix() {
   std::cout << "EMatrix() {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
@@ -10,10 +10,11 @@ EMatrix::EMatrix() {
   std::cout << "}  // EMatrix()" << std::endl;
 }
 
-/// @brief parametrized constructor with number of rows and columns
+/// @brief Parametrized constructor with number of rows and columns
 /// @param rows
 /// @param cols
-EMatrix::EMatrix(int rows, int cols) : rows_(rows), cols_(cols) {
+EMatrix::EMatrix(int rows, int cols)
+    : rows_(rows), cols_(cols), inline_size_(rows * cols) {
   std::cout << "EMatrix(int rows, int cols) {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
   std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;

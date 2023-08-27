@@ -40,3 +40,9 @@ void EMatrix::DeleteMatrix() {
 
   std::cout << "\t}  // DeleteMatrix()" << std::endl;
 }
+
+void EMatrix::SumOrSubMatrix(const EMatrix& other, int operation_select) {
+  for (int i = 0; i < inline_size_; ++i) {
+    matrix_[0][i] += operation_select * other.matrix_[0][i];
+  }
+}
