@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+#define EQUAL_MATRICES 1
+#define DIFFERENT_MATRICES 0
+
 class EMatrix {
  public:
   EMatrix();
@@ -15,6 +18,8 @@ class EMatrix {
   double** get_matrix();
   int get_rows();
   int get_cols();
+
+  bool EqMatrix(const EMatrix& other);
 
   EMatrix& operator=(const EMatrix& other);
   EMatrix& operator=(EMatrix&& other);

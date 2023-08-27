@@ -53,15 +53,25 @@ EMatrix& EMatrix::operator=(const EMatrix& other) {
   std::cout << "\t\tmatrix.cols_ = " << cols_ << std::endl;
 
   if (this != &other) {
-    DeleteMatrix();
-    rows_ = other.rows_;
-    cols_ = other.cols_;
-    CreateMatrix();
-    std::copy((double*)other.matrix_ + other.rows_,
-              (double*)other.matrix_ + other.rows_ * (1 + other.cols_),
-              (double*)matrix_ + rows_);
+    if (!(rows_ == other.rows_ && cols_ == other.cols_)) {
+      DeleteMatrix();
+      rows_ = other.rows_;
+      cols_ = other.cols_;
+      CreateMatrix();
+    }
 
-    std::cout << "\tmatrix_dest after copying:" << std::endl; 
+    std::copy(&other.matrix_[0][0],
+              &other.matrix_[other.rows_ - 1][other.cols_], matrix_[0]);
+
+    // std::copy(*(other.matrix_) + other.rows_,
+    //           *(other.matrix_) + other.rows_ * (1 + other.cols_),
+    //           *matrix_ + rows_);
+
+    // std::copy((double*)other.matrix_ + other.rows_,
+    //           (double*)other.matrix_ + other.rows_ * (1 + other.cols_),
+    //           (double*)matrix_ + rows_);
+
+    std::cout << "\tmatrix_dest after copying:" << std::endl;
     PrintMatrix();
   }
 
@@ -79,9 +89,9 @@ EMatrix::EMatrix(EMatrix&& other) {
   std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
   std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
 
-  // *this = std::move(other);
+  *this = std::move(other);
   // EMatrix::operator=(other);
-  *this = other;
+  // *this = other;
 
   std::cout << "\t  // moved from: other.matrix_ = " << other.matrix_
             << std::endl;

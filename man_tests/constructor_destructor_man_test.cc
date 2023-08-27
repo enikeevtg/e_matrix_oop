@@ -26,9 +26,7 @@ void test_matrix_new_11x11() {
 }
 
 void test_matrix_copy_constructor() {
-  cout << endl
-       << "EMatrix matrix_src(5, 5) && matrix_src.matrixInlinePrinting():"
-       << endl;
+  cout << endl << "EMatrix matrix_src(5, 5):" << endl;
   EMatrix matrix_src(5, 5);
   int inline_size = matrix_src.get_rows() * matrix_src.get_cols();
   cout << "matrix_src filling:" << endl;
@@ -41,13 +39,16 @@ void test_matrix_copy_constructor() {
 }
 
 EMatrix return_rvalue() {
-  EMatrix return_matrix(3, 3);
+  EMatrix return_matrix(3, 4);
   return return_matrix;
 }
 
 void test_matrix_move_constructor() {
-  EMatrix dest = return_rvalue();
+  cout << endl << "EMatrix dest = std::move(return_rvalue()):" << endl;
+  EMatrix dest = std::move(return_rvalue());
   // dest = return_rvalue();
+
+  EMatrix dest2 = dest;
 }
 
 int main() {
@@ -63,11 +64,11 @@ int main() {
   // test_matrix_new_11x11();
   // cout << "========================================================" << endl;
 
-  // test_matrix_copy_constructor();
-  // cout << "===================END===================" << endl;
-
-  test_matrix_move_constructor();
+  test_matrix_copy_constructor();
   cout << "===================END===================" << endl;
+
+  // test_matrix_move_constructor();
+  // cout << "===================END===================" << endl;
 
   return 0;
 }

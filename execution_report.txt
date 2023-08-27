@@ -1,74 +1,123 @@
-EMatrix() {
-	matrix = 0x7ffeeb89d6e0
-	matrix.matrix_ = 0
-	matrix.rows_ = 0
-	matrix.cols_ = 0
-}  // EMatrix()
+
+EMatrix matrix_src(5, 5):
 EMatrix(int rows, int cols) {
-	matrix = 0x7ffeeb89d6f0
+	matrix = 0x7ffee60016e0
 	matrix.matrix_ = 0
-	matrix.rows_ = 3
-	matrix.cols_ = 3
+	matrix.rows_ = 5
+	matrix.cols_ = 5
 	CreateMatrix() {
-		matrix = 0x7ffeeb89d6f0
-		matrix.matrix_ = 0x7fd4154059d0
-		matrix.rows_ = 3
-		matrix.cols_ = 3
+		matrix = 0x7ffee60016e0
+		matrix.matrix_ = 0x7fdb48c059d0
+		matrix.rows_ = 5
+		matrix.cols_ = 5
 		printMatrix() {
-			0x7fd4154059e8: 0 0 0
-			0x7fd415405a00: 0 0 0
-			0x7fd415405a18: 0 0 0
+			0x7fdb48c059f8: 0 0 0 0 0
+			0x7fdb48c05a20: 0 0 0 0 0
+			0x7fdb48c05a48: 0 0 0 0 0
+			0x7fdb48c05a70: 0 0 0 0 0
+			0x7fdb48c05a98: 0 0 0 0 0
 		}  // PrintMatrix()
 	}  // CreateMatrix()
 }  // EMatrix(int rows, int cols)
-	operator=(EMatrix&& other) {
-		matrix = 0x7ffeeb89d6e0
+matrix_src filling:
+		printMatrix() {
+			0x7fdb48c059f8: 0 1 2 3 4
+			0x7fdb48c05a20: 5 6 7 8 9
+			0x7fdb48c05a48: 10 11 12 13 14
+			0x7fdb48c05a70: 15 16 17 18 19
+			0x7fdb48c05a98: 20 21 22 23 24
+		}  // PrintMatrix()
+EMatrix(const EMatrix& other) {
+	matrix = 0x7ffee60016d0
+	matrix.matrix_ = 0
+	matrix.rows_ = 0
+	matrix.cols_ = 0
+	operator=(const EMatrix& other) {
+		matrix = 0x7ffee60016d0
 		matrix.matrix_ = 0
 		matrix.rows_ = 0
 		matrix.cols_ = 0
 	DeleteMatrix() {
 	}  // DeleteMatrix()
-	}  // operator=(EMatrix&& other)
+	CreateMatrix() {
+		matrix = 0x7ffee60016d0
+		matrix.matrix_ = 0x7fdb48c05b60
+		matrix.rows_ = 5
+		matrix.cols_ = 5
+		printMatrix() {
+			0x7fdb48c05b88: 0 0 0 0 0
+			0x7fdb48c05bb0: 0 0 0 0 0
+			0x7fdb48c05bd8: 0 0 0 0 0
+			0x7fdb48c05c00: 0 0 0 0 0
+			0x7fdb48c05c28: 0 0 0 0 0
+		}  // PrintMatrix()
+	}  // CreateMatrix()
+	matrix_dest after copying:
+		printMatrix() {
+			0x7fdb48c05b88: 0 1 2 3 4
+			0x7fdb48c05bb0: 5 6 7 8 9
+			0x7fdb48c05bd8: 10 11 12 13 14
+			0x7fdb48c05c00: 15 16 17 18 19
+			0x7fdb48c05c28: 20 21 22 23 24
+		}  // PrintMatrix()
+	}  // operator=(const EMatrix& other)
+		// copied from: other.matrix_ = 0x7fdb48c059d0
+	matrix = 0x7ffee60016d0
+	matrix.matrix_ = 0x7fdb48c05b60
+	matrix.rows_ = 5
+	matrix.cols_ = 5
+		printMatrix() {
+			0x7fdb48c05b88: 0 1 2 3 4
+			0x7fdb48c05bb0: 5 6 7 8 9
+			0x7fdb48c05bd8: 10 11 12 13 14
+			0x7fdb48c05c00: 15 16 17 18 19
+			0x7fdb48c05c28: 20 21 22 23 24
+		}  // PrintMatrix()
+}  //EMatrix(const EMatrix& other)
 ~EMatrix() {
-	matrix = 0x7ffeeb89d6f0
-	matrix.matrix_ = 0
-	matrix.rows_ = 0
-	matrix.cols_ = 0
+	matrix = 0x7ffee60016d0
+	matrix.matrix_ = 0x7fdb48c05b60
+	matrix.rows_ = 5
+	matrix.cols_ = 5
 	DeleteMatrix() {
+		matrix = 0x7ffee60016d0
+		matrix.matrix_ = 0
+		matrix.rows_ = 5
+		matrix.cols_ = 5
 	}  // DeleteMatrix()
-	matrix = 0x7ffeeb89d6f0
+	matrix = 0x7ffee60016d0
 	matrix.matrix_ = 0
-	matrix.rows_ = 0
-	matrix.cols_ = 0
+	matrix.rows_ = 5
+	matrix.cols_ = 5
 }  //~EMatrix()
 ~EMatrix() {
-	matrix = 0x7ffeeb89d6e0
-	matrix.matrix_ = 0x7fd4154059d0
-	matrix.rows_ = 3
-	matrix.cols_ = 3
+	matrix = 0x7ffee60016e0
+	matrix.matrix_ = 0x7fdb48c059d0
+	matrix.rows_ = 5
+	matrix.cols_ = 5
 	DeleteMatrix() {
-		matrix = 0x7ffeeb89d6e0
+		matrix = 0x7ffee60016e0
 		matrix.matrix_ = 0
-		matrix.rows_ = 3
-		matrix.cols_ = 3
+		matrix.rows_ = 5
+		matrix.cols_ = 5
 	}  // DeleteMatrix()
-	matrix = 0x7ffeeb89d6e0
+	matrix = 0x7ffee60016e0
 	matrix.matrix_ = 0
-	matrix.rows_ = 3
-	matrix.cols_ = 3
+	matrix.rows_ = 5
+	matrix.cols_ = 5
 }  //~EMatrix()
 ===================END===================
-Process:         man_test_runner [36955]
+Process:         man_test_runner [98776]
 Path:            /opt/goinfre/*/man_test_runner
-Load Address:    0x104362000
+Load Address:    0x109bfe000
 Identifier:      man_test_runner
 Version:         ???
 Code Type:       X86-64
 Platform:        macOS
-Parent Process:  leaks [36954]
+Parent Process:  leaks [98775]
 
-Date/Time:       2023-08-26 23:12:42.586 +0300
-Launch Time:     2023-08-26 23:12:42.105 +0300
+Date/Time:       2023-08-27 23:31:01.531 +0300
+Launch Time:     2023-08-27 23:31:01.013 +0300
 OS Version:      macOS 11.6.6 (20G624)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
@@ -79,6 +128,6 @@ Physical footprint (peak):  468K
 ----
 
 leaks Report Version: 4.0
-Process 36955: 172 nodes malloced for 84 KB
-Process 36955: 0 leaks for 0 total leaked bytes.
+Process 98776: 173 nodes malloced for 84 KB
+Process 98776: 0 leaks for 0 total leaked bytes.
 
