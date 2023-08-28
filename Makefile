@@ -42,7 +42,8 @@ clean:
 
 # DEVELOPING TESTS
 man:
-	$(CC) $(CF) $(STD) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
+#	$(CC) $(CF) $(STD) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
+	$(CC) $(CF) $(STD) $(MAN_TEST_DIR)operations_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
 	@$(LEAKS) $(MAN_TEST_RUNER) > $(EXECUTION_REPORT)
 #	$(OPEN_TXT) $(EXECUTION_REPORT)
 	@$(RM) $(MAN_TEST_RUNER)

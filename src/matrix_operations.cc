@@ -22,15 +22,22 @@ void EMatrix::SumMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_)
     throw DIFFERENT_MATRIX_DIMENTIONS;
 
-  SumOrSubMatrix(other, SUM_MATRICES);
+  SumOrSubMatrix(other, MATRICES_SUMMATION);
 }
 
 /// @brief Subtracts other matrix from the current one
 /// @param other
-void EMatrix::SumMatrix(const EMatrix& other) {
+void EMatrix::SubMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_)
     throw DIFFERENT_MATRIX_DIMENTIONS;
 
-  SumOrSubMatrix(other, SUBTRACT_MATRICES);
+  SumOrSubMatrix(other, MATRICES_SUBTRACTION);
 }
 
+/// @brief Multiplies the current matrix by a number
+/// @param num 
+void EMatrix::MulNumber(const double num) {
+  for (int i = 0; i < inline_size_; ++i) {
+    matrix_[0][i] *= num;
+  }
+}

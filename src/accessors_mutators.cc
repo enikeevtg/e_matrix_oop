@@ -1,6 +1,6 @@
 #include "../e_matrix_oop.h"
 
-double** EMatrix::get_matrix() { return matrix_; } // temp method
+double** EMatrix::get_matrix() { return matrix_; }  // temp method
 
 /// @brief rows_ accessor
 /// @return matrix rows number

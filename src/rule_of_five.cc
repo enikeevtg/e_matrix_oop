@@ -19,7 +19,7 @@ EMatrix::~EMatrix() {
 
 /// @brief Copy Constructor
 /// @param other
-EMatrix::EMatrix(const EMatrix& other) {
+EMatrix::EMatrix(const EMatrix& other) : EMatrix() {
   // : rows_(other.rows_), cols_(other.cols_) {
   std::cout << "EMatrix(const EMatrix& other) {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
@@ -27,7 +27,6 @@ EMatrix::EMatrix(const EMatrix& other) {
   std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
   std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
 
-  // *this = std::move(EMatrix::operator=(other));
   // EMatrix::operator=(other);
   *this = other;
 
@@ -75,16 +74,15 @@ EMatrix& EMatrix::operator=(const EMatrix& other) {
 
 /// @brief Move constructor
 /// @param other
-EMatrix::EMatrix(EMatrix&& other) {
+EMatrix::EMatrix(EMatrix&& other) : EMatrix() {
   std::cout << "EMatrix(EMatrix&& other) {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
   std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
   std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
   std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
 
-  *this = std::move(other);
   // EMatrix::operator=(other);
-  // *this = other;
+  *this = std::move(other);
 
   std::cout << "\t  // moved from: other.matrix_ = " << other.matrix_
             << std::endl;

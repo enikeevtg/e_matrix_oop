@@ -6,12 +6,10 @@
 #define EQUAL_MATRICES 1
 #define DIFFERENT_MATRICES 0
 
-enum {
-  DIFFERENT_MATRIX_DIMENTIONS = 1
-};
+enum { DIFFERENT_MATRIX_DIMENTIONS = 1 };
 
-#define SUM_MATRICES 1
-#define SUBTRACT_MATRICES -1
+#define MATRICES_SUMMATION 1
+#define MATRICES_SUBTRACTION -1
 
 class EMatrix {
  public:
@@ -29,15 +27,16 @@ class EMatrix {
   bool EqMatrix(const EMatrix& other);
   void SumMatrix(const EMatrix& other);
   void SubMatrix(const EMatrix& other);
+  void MulNumber(const double num);
 
   EMatrix& operator=(const EMatrix& other);
   EMatrix& operator=(EMatrix&& other);
 
  private:
-  double** matrix_{nullptr};
-  int rows_{0};
-  int cols_{0};
-  int inline_size_{0};
+  double** matrix_;
+  int rows_;
+  int cols_;
+  int inline_size_;
 
   void CreateMatrix();
   void DeleteMatrix();

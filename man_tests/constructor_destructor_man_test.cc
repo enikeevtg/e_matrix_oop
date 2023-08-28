@@ -45,10 +45,10 @@ EMatrix return_rvalue() {
 
 void test_matrix_move_constructor() {
   cout << endl << "EMatrix dest = std::move(return_rvalue()):" << endl;
-  EMatrix dest = std::move(return_rvalue());
+  EMatrix dest(3, 4);
   // dest = return_rvalue();
 
-  EMatrix dest2 = dest;
+  EMatrix dest2 = std::move(dest);
 }
 
 int main() {

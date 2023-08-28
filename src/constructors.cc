@@ -1,7 +1,7 @@
 #include "../e_matrix_oop.h"
 
 /// @brief Default constructor
-EMatrix::EMatrix() {
+EMatrix::EMatrix() : matrix_(nullptr), rows_(0), cols_(0), inline_size_(0) {
   std::cout << "EMatrix() {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
   std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
@@ -21,7 +21,7 @@ EMatrix::EMatrix(int rows, int cols)
   std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
   std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
 
-  if (rows_ > 0 && cols_ > 0) {
+  if (inline_size_ > 0) {
     CreateMatrix();
   }
 
