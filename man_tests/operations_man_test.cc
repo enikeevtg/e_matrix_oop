@@ -86,8 +86,7 @@ void MulMatrixTest() {
 
   try {
     matrix_3x3.MulMatrix(matrix_2x1);
-  }
-  catch (std::exception& e) {
+  } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
     matrix_3x3.PrintMatrix();
   }
@@ -95,16 +94,14 @@ void MulMatrixTest() {
   try {
     EMatrix matrix;
     matrix.MulMatrix(matrix_3x3);
-  }
-  catch (const std::exception& e) {
+  } catch (const std::exception& e) {
     std::cout << e.what() << std::endl;
   }
 
   try {
     EMatrix matrix;
     matrix_3x3.MulMatrix(matrix);
-  }
-  catch (std::exception& e) {
+  } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
   }
 }

@@ -2,7 +2,7 @@
 
 /// @brief Checks matrices for equality with each other
 /// @param other
-/// @return Checking result
+/// @return Checking result: equal - 1, not equal - 0
 bool EMatrix::EqMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_) return DIFFERENT_MATRICES;
 
@@ -45,7 +45,7 @@ void EMatrix::MulNumber(const double num) noexcept {
 }
 
 /// @brief Multiplies the current matrix by the second matrix
-/// @param other 
+/// @param other
 void EMatrix::MulMatrix(const EMatrix& other) {
   if (matrix_ == nullptr) {
     throw std::invalid_argument("MulMatrix error: first matrix is empty");
@@ -59,16 +59,31 @@ void EMatrix::MulMatrix(const EMatrix& other) {
         "equal to the number of rows of the second matrix");
   }
 
-  EMatrix result_matrix{rows_, other.cols_};
+  EMatrix result{rows_, other.cols_};
 
-  for (int i = 0; i < result_matrix.rows_; ++i) {
-    for (int j = 0; j < result_matrix.cols_; ++j) {
+  for (int i = 0; i < result.rows_; ++i) {
+    for (int j = 0; j < result.cols_; ++j) {
       for (int k = 0; k < cols_; ++k) {
-        result_matrix.matrix_[i][j] += matrix_[i][k] * other.matrix_[k][j];
+        result.matrix_[i][j] += matrix_[i][k] * other.matrix_[k][j];
       }
     }
   }
 
-  swap(result_matrix);
+  swap(result);
 }
 
+/// @brief Creates a new transposed matrix from the current one and returns it
+/// @return Transposed matrix
+EMatrix EMatrix::Transpose() noexcept {
+  EMatrix result{cols_, rows_};
+
+  if (matrix_ != nullptr) {
+    for (int i = 0; i < result.rows_; ++i) {
+      for (int j = 0; j < result.cols_; ++j) {
+        result.matrix_[i][j] = matrix_[j][i];
+      }
+    }
+  }
+
+  return result;
+}

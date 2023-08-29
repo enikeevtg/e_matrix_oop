@@ -28,6 +28,7 @@ class EMatrix {
   void SubMatrix(const EMatrix& other);
   void MulNumber(const double num) noexcept;
   void MulMatrix(const EMatrix& other);
+  EMatrix Transpose() noexcept;
 
   EMatrix& operator=(const EMatrix& other);
   EMatrix& operator=(EMatrix&& other) noexcept;
