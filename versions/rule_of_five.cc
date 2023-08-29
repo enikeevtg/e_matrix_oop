@@ -22,7 +22,7 @@ EMatrix::~EMatrix() {
             << cols_ << " )" << std::endl;
 }
 
-/// @brief Copy assignment operator
+/// @brief Copy constructor
 /// @param other
 /// @return
 EMatrix::EMatrix(const EMatrix& other)

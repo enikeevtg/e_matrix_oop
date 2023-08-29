@@ -2,16 +2,17 @@
 
 /// @brief Copy Constructor
 /// @param other
-EMatrix::EMatrix(const EMatrix& other) {
-  // : rows_(other.rows_), cols_(other.cols_) {
+EMatrix::EMatrix(const EMatrix& other)
+    : rows_(other.rows_), cols_(other.cols_), inline_size_(other.inline_size_) {
   std::cout << "EMatrix(const EMatrix& other) {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
   std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
   std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
   std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
 
-  // EMatrix::operator=(other);
-  *this = other;
+  CreateMatrix();
+  std::copy(&other.matrix_[0][0], &other.matrix_[0][other.inline_size_],
+            matrix_[0]);
 
   std::cout << "\t\t// copied from: other.matrix_ = " << other.matrix_
             << std::endl;
@@ -35,16 +36,9 @@ EMatrix& EMatrix::operator=(const EMatrix& other) {
   std::cout << "\t\tmatrix.cols_ = " << cols_ << std::endl;
 
   if (this != &other) {
-    if (!(rows_ == other.rows_ && cols_ == other.cols_)) {
-      DeleteMatrix();
-      rows_ = other.rows_;
-      cols_ = other.cols_;
-      inline_size_ = other.inline_size_;
-      CreateMatrix();
-    }
+    EMatrix matrix_copy{other};
 
-    std::copy(&other.matrix_[0][0],
-              &other.matrix_[other.rows_ - 1][other.cols_], matrix_[0]);
+    *this = std::move(matrix_copy);
 
     std::cout << "\tmatrix_dest after copying:" << std::endl;
     PrintMatrix();
