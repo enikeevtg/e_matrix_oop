@@ -5,11 +5,12 @@
 
 #include "../e_matrix_oop.h"
 
-struct EMatrixTest : public testing::Test {
-  EMatrix *matrix;
-
+class EMatrixTest : public testing::Test {
+ protected:
   void SetUp();
   void TearDown();
+
+  EMatrix *matrix;
 };
 
 #endif  // E_MATRIXPLUS_TESTS_UNIT_TESTS_H_

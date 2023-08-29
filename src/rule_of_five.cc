@@ -20,7 +20,7 @@ EMatrix& EMatrix::operator=(const EMatrix& other) {
 
 /// @brief Move constructor
 /// @param other
-EMatrix::EMatrix(EMatrix&& other) noexcept { *this = std::move(other); }
+EMatrix::EMatrix(EMatrix&& other) noexcept { swap(other); }
 
 /// @brief Move assignment operator
 /// @param other
@@ -32,6 +32,6 @@ EMatrix& EMatrix::operator=(EMatrix&& other) noexcept {
 
 /// @brief Destructor
 EMatrix::~EMatrix() {
-  std::cout << "Destruction matrix: " << this << std::endl;
+  // std::cout << "Destruction matrix: " << this << std::endl;
   DeleteMatrix();
 }

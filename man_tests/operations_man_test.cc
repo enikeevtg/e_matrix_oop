@@ -66,10 +66,54 @@ void MulNumberTest() {
   matrix.PrintMatrix();
 }
 
+void MulMatrixTest() {
+  cout << "void MulMatrixTest()" << endl;
+
+  EMatrix matrix_3x3(3, 3);
+  EMatrix matrix_2x1(2, 1);
+  int inline_size_3x3 = matrix_3x3.get_rows() * matrix_3x3.get_cols();
+  for (int i = 0; i < inline_size_3x3; i++) {
+    matrix_3x3.get_matrix()[0][i] = (double)i;
+  }
+
+  int inline_size_2x1 = matrix_2x1.get_rows() * matrix_2x1.get_cols();
+  for (int i = 0; i < inline_size_2x1; i++) {
+    matrix_2x1.get_matrix()[0][i] = (double)i;
+  }
+
+  matrix_3x3.PrintMatrix();
+  matrix_2x1.PrintMatrix();
+
+  try {
+    matrix_3x3.MulMatrix(matrix_2x1);
+  }
+  catch (std::exception& e) {
+    std::cout << e.what() << std::endl;
+    matrix_3x3.PrintMatrix();
+  }
+
+  try {
+    EMatrix matrix;
+    matrix.MulMatrix(matrix_3x3);
+  }
+  catch (const std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
+
+  try {
+    EMatrix matrix;
+    matrix_3x3.MulMatrix(matrix);
+  }
+  catch (std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
+}
+
 int main() {
-  SumMatrixTest();
-  SubMatrixTest();
-  MulNumberTest();
+  // SumMatrixTest();
+  // SubMatrixTest();
+  // MulNumberTest();
+  MulMatrixTest();
 
   return 0;
 }

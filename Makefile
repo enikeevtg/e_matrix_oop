@@ -31,8 +31,9 @@ EXE = a.out $(MAN_TEST_RUNNER) $(TESTS_RUNNER)
 all:
 
 test:
-	@$(CC) $(CF) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
-	@./$(TESTS_RUNNER) > $(TESTS_REPORT)
+	$(CC) $(CF) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
+	@./$(TESTS_RUNNER)
+#	 > $(TESTS_REPORT)
 	@$(RM) $(TESTS_RUNNER)
 
 e_matrix_oop.a:
@@ -52,8 +53,8 @@ clean:
 
 # DEVELOPING TESTS
 man:
-	@$(CC) $(CF) $(STD) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNNER)
-#	@$(CC) $(CF) $(STD) $(MAN_TEST_DIR)operations_man_test.cc $(SRC) -o $(MAN_TEST_RUNNER)
+#	@$(CC) $(CF) $(STD) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNNER)
+	@$(CC) $(CF) $(STD) $(MAN_TEST_DIR)operations_man_test.cc $(SRC) -o $(MAN_TEST_RUNNER)
 	@$(LEAKS) $(MAN_TEST_RUNNER) > $(EXECUTION_REPORT)
 #	$(OPEN_TXT) $(EXECUTION_REPORT)
 	@$(RM) $(MAN_TEST_RUNNER)
