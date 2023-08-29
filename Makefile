@@ -4,26 +4,36 @@
 CC = gcc
 LEAKS = leaks -atExit -- #
 RM = rm -rf
+OPEN_TXT = open -e
 
 # UTITLITIES OPTIONS
 CF = -Wall -Werror -Wextra -lstdc++
 STD = -std=c++17 -pedantic
+GTESTF = -lgtest -pthread
 
 # FILENAMES
 TARGET = e_matrix_oop.a
 SRC_DIR = ./src/
 SRC = $(wildcard $(SRC_DIR)*.cc)
 
+TESTS_DIR = ./tests/
+TESTS_SRC = $(wildcard $(TESTS_DIR)*.cc)
+TESTS_RUNNER = tests_runner
+TESTS_REPORT = u_tests_report.txt
+
 MAN_TEST_DIR = ./man_tests/
-MAN_TEST_RUNER = ./man_test_runner
-EXECUTION_REPORT = execution_report.txt
-OPEN_TXT = open -e
-EXE = $(MAN_TEST_RUNER) a.out
+MAN_TEST_RUNNER = ./man_test_runner
+EXECUTION_REPORT = man_tests_report.txt
+
+EXE = a.out $(MAN_TEST_RUNNER) $(TESTS_RUNNER)
 
 # BUILD
 all:
 
 test:
+	@$(CC) $(CF) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
+	@./$(TESTS_RUNNER) > $(TESTS_REPORT)
+	@$(RM) $(TESTS_RUNNER)
 
 e_matrix_oop.a:
 
@@ -42,8 +52,8 @@ clean:
 
 # DEVELOPING TESTS
 man:
-#	$(CC) $(CF) $(STD) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
-	$(CC) $(CF) $(STD) $(MAN_TEST_DIR)operations_man_test.cc $(SRC) -o $(MAN_TEST_RUNER)
-	@$(LEAKS) $(MAN_TEST_RUNER) > $(EXECUTION_REPORT)
+	@$(CC) $(CF) $(STD) $(MAN_TEST_DIR)constructor_destructor_man_test.cc $(SRC) -o $(MAN_TEST_RUNNER)
+#	@$(CC) $(CF) $(STD) $(MAN_TEST_DIR)operations_man_test.cc $(SRC) -o $(MAN_TEST_RUNNER)
+	@$(LEAKS) $(MAN_TEST_RUNNER) > $(EXECUTION_REPORT)
 #	$(OPEN_TXT) $(EXECUTION_REPORT)
-	@$(RM) $(MAN_TEST_RUNER)
+	@$(RM) $(MAN_TEST_RUNNER)

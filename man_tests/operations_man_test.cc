@@ -68,8 +68,8 @@ void MulNumberTest() {
 
 int main() {
   SumMatrixTest();
-  SubMatrixTest();  
+  SubMatrixTest();
   MulNumberTest();
-  
+
   return 0;
 }

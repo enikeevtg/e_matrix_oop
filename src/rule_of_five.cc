@@ -1,25 +1,8 @@
 #include "../e_matrix_oop.h"
 
-/// @brief Destructor
-EMatrix::~EMatrix() {
-  std::cout << "~EMatrix() {" << std::endl;
-  std::cout << "\tmatrix = " << this << std::endl;
-  std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
-  std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
-  std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
-
-  DeleteMatrix();
-
-  std::cout << "\tmatrix = " << this << std::endl;
-  std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
-  std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
-  std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
-  std::cout << "}  //~EMatrix()" << std::endl;
-}
-
 /// @brief Copy Constructor
 /// @param other
-EMatrix::EMatrix(const EMatrix& other) : EMatrix() {
+EMatrix::EMatrix(const EMatrix& other) {
   // : rows_(other.rows_), cols_(other.cols_) {
   std::cout << "EMatrix(const EMatrix& other) {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
@@ -74,7 +57,7 @@ EMatrix& EMatrix::operator=(const EMatrix& other) {
 
 /// @brief Move constructor
 /// @param other
-EMatrix::EMatrix(EMatrix&& other) : EMatrix() {
+EMatrix::EMatrix(EMatrix&& other) noexcept {
   std::cout << "EMatrix(EMatrix&& other) {" << std::endl;
   std::cout << "\tmatrix = " << this << std::endl;
   std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
@@ -98,7 +81,7 @@ EMatrix::EMatrix(EMatrix&& other) : EMatrix() {
 /// @brief Move assignment operator
 /// @param other
 /// @return
-EMatrix& EMatrix::operator=(EMatrix&& other) {
+EMatrix& EMatrix::operator=(EMatrix&& other) noexcept {
   std::cout << "\toperator=(EMatrix&& other) {" << std::endl;
   std::cout << "\t\tmatrix = " << this << std::endl;
   std::cout << "\t\tmatrix.matrix_ = " << matrix_ << std::endl;
@@ -120,4 +103,21 @@ EMatrix& EMatrix::operator=(EMatrix&& other) {
   std::cout << "\t}  // operator=(EMatrix&& other)" << std::endl;
 
   return *this;
+}
+
+/// @brief Destructor
+EMatrix::~EMatrix() {
+  std::cout << "~EMatrix() {" << std::endl;
+  std::cout << "\tmatrix = " << this << std::endl;
+  std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
+  std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
+  std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
+
+  DeleteMatrix();
+
+  std::cout << "\tmatrix = " << this << std::endl;
+  std::cout << "\tmatrix.matrix_ = " << matrix_ << std::endl;
+  std::cout << "\tmatrix.rows_ = " << rows_ << std::endl;
+  std::cout << "\tmatrix.cols_ = " << cols_ << std::endl;
+  std::cout << "}  //~EMatrix()" << std::endl;
 }

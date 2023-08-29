@@ -2,11 +2,10 @@
 #define E_MATRIXPLUS_E_MATRIX_OOP_H_
 
 #include <iostream>
+#include <stdexcept>
 
 #define EQUAL_MATRICES 1
 #define DIFFERENT_MATRICES 0
-
-enum { DIFFERENT_MATRIX_DIMENTIONS = 1 };
 
 #define MATRICES_SUMMATION 1
 #define MATRICES_SUBTRACTION -1
@@ -16,13 +15,13 @@ class EMatrix {
   EMatrix();
   EMatrix(int rows, int cols);
   EMatrix(const EMatrix& other);
-  EMatrix(EMatrix&& other);
+  EMatrix(EMatrix&& other) noexcept;
   ~EMatrix();
 
-  void PrintMatrix();
-  double** get_matrix();
-  int get_rows();
-  int get_cols();
+  void PrintMatrix();     // TMP METHOD
+  double** get_matrix();  // TMP METHOD
+  int get_rows() const;
+  int get_cols() const;
 
   bool EqMatrix(const EMatrix& other);
   void SumMatrix(const EMatrix& other);
@@ -30,13 +29,13 @@ class EMatrix {
   void MulNumber(const double num);
 
   EMatrix& operator=(const EMatrix& other);
-  EMatrix& operator=(EMatrix&& other);
+  EMatrix& operator=(EMatrix&& other) noexcept;
 
  private:
-  double** matrix_;
-  int rows_;
-  int cols_;
-  int inline_size_;
+  double** matrix_{nullptr};
+  int rows_{0};
+  int cols_{0};
+  size_t inline_size_{0};
 
   void CreateMatrix();
   void DeleteMatrix();

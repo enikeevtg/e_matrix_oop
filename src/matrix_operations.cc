@@ -7,7 +7,7 @@ bool EMatrix::EqMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_) return DIFFERENT_MATRICES;
 
   bool check = EQUAL_MATRICES;
-  for (int i = 0; check == EQUAL_MATRICES && i < inline_size_; ++i) {
+  for (size_t i = 0; check == EQUAL_MATRICES && i < inline_size_; ++i) {
     if (matrix_[0][i] != other.matrix_[0][i]) {
       check = DIFFERENT_MATRICES;
     }
@@ -20,7 +20,8 @@ bool EMatrix::EqMatrix(const EMatrix& other) {
 /// @param other
 void EMatrix::SumMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_)
-    throw DIFFERENT_MATRIX_DIMENTIONS;
+    throw std::range_error(
+        "SumMatrix() error: matrices have different dimentions");
 
   SumOrSubMatrix(other, MATRICES_SUMMATION);
 }
@@ -29,15 +30,16 @@ void EMatrix::SumMatrix(const EMatrix& other) {
 /// @param other
 void EMatrix::SubMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_)
-    throw DIFFERENT_MATRIX_DIMENTIONS;
+    throw std::range_error(
+        "SubMatrix() error: matrices have different dimentions");
 
   SumOrSubMatrix(other, MATRICES_SUBTRACTION);
 }
 
 /// @brief Multiplies the current matrix by a number
-/// @param num 
+/// @param num
 void EMatrix::MulNumber(const double num) {
-  for (int i = 0; i < inline_size_; ++i) {
+  for (size_t i = 0; i < inline_size_; ++i) {
     matrix_[0][i] *= num;
   }
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 
 #include "../e_matrix_oop.h"
 using namespace std;
@@ -17,6 +18,15 @@ void test_new_matrix() {
 void test_matrix_2x2() {
   cout << endl << "EMatrix matrix(2, 2):" << endl;
   EMatrix matrix(2, 2);
+}
+
+void test_matrix_0x2() {
+  cout << endl << "EMatrix matrix(0, 2):" << endl;
+  try {
+    EMatrix matrix(0, 2);
+  } catch (const std::exception& e) {
+    cout << e.what() << endl;
+  }
 }
 
 void test_matrix_new_11x11() {
@@ -52,23 +62,26 @@ void test_matrix_move_constructor() {
 }
 
 int main() {
-  test_matrix();
+  // test_matrix();
+  // cout << "========================================================" << endl;
+
+  // test_new_matrix();
+  // cout << "========================================================" << endl;
+
+  // test_matrix_2x2();
+  // cout << "========================================================" << endl;
+
+  test_matrix_0x2();
   cout << "========================================================" << endl;
 
-  test_new_matrix();
-  cout << "========================================================" << endl;
+  // test_matrix_new_11x11();
+  // cout << "========================================================" << endl;
 
-  test_matrix_2x2();
-  cout << "========================================================" << endl;
+  // test_matrix_copy_constructor();
+  // cout << "========================================================" << endl;
 
-  test_matrix_new_11x11();
-  cout << "========================================================" << endl;
-
-  test_matrix_copy_constructor();
-  cout << "========================================================" << endl;
-
-  test_matrix_move_constructor();
-  cout << "========================================================" << endl;
+  // test_matrix_move_constructor();
+  // cout << "========================================================" << endl;
 
   return 0;
 }
