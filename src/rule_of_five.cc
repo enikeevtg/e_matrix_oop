@@ -2,9 +2,7 @@
 
 /// @brief Copy Constructor
 /// @param other
-EMatrix::EMatrix(const EMatrix& other)
-    : rows_(other.rows_), cols_(other.cols_), inline_size_(other.inline_size_) {
-  CreateMatrix();
+EMatrix::EMatrix(const EMatrix& other) : EMatrix(other.rows_, other.cols_) {
   std::copy(&other.matrix_[0][0], &other.matrix_[0][other.inline_size_],
             matrix_[0]);
 }
@@ -15,7 +13,7 @@ EMatrix::EMatrix(const EMatrix& other)
 EMatrix& EMatrix::operator=(const EMatrix& other) {
   if (this != &other) {
     EMatrix matrix_copy{other};
-    *this = std::move(matrix_copy);
+    swap(matrix_copy);
   }
   return *this;
 }
@@ -28,20 +26,12 @@ EMatrix::EMatrix(EMatrix&& other) noexcept { *this = std::move(other); }
 /// @param other
 /// @return
 EMatrix& EMatrix::operator=(EMatrix&& other) noexcept {
-  if (this != &other) {
-    DeleteMatrix();
-    rows_ = other.rows_;
-    cols_ = other.cols_;
-    inline_size_ = other.inline_size_;
-    matrix_ = other.matrix_;
-
-    other.rows_ = 0;
-    other.cols_ = 0;
-    other.inline_size_ = 0;
-    other.matrix_ = nullptr;
-  }
+  if (this != &other) swap(other);
   return *this;
 }
 
 /// @brief Destructor
-EMatrix::~EMatrix() { DeleteMatrix(); }
+EMatrix::~EMatrix() {
+  std::cout << "Destruction matrix: " << this << std::endl;
+  DeleteMatrix();
+}

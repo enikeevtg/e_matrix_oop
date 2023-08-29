@@ -59,14 +59,19 @@ void test_matrix_copy_assignment() {
   matrix_src.PrintMatrix();
 
   EMatrix matrix_dest{3, 1};
+  matrix_dest.PrintMatrix();
   matrix_dest = matrix_src;
+  matrix_dest.PrintMatrix();
 }
+
+EMatrix ReturnRValue(EMatrix& src) { return src; }
 
 void test_matrix_move_constructor() {
   cout << endl << "test_matrix_move_constructor" << endl;
-  EMatrix src(3, 4);
+  EMatrix src{3, 4};
 
-  EMatrix dest = std::move(src);
+  EMatrix dest{3, 1};
+  dest = ReturnRValue(src);
 }
 
 int main() {

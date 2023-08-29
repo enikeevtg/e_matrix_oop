@@ -38,7 +38,8 @@ class EMatrix {
   size_t inline_size_{0};
 
   void CreateMatrix();
-  void DeleteMatrix();
+  void swap(EMatrix& other) noexcept;
+  void DeleteMatrix() noexcept;
 
   void SumOrSubMatrix(const EMatrix& other, int operation_select);
 };

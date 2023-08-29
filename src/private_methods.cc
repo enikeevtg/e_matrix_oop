@@ -16,7 +16,14 @@ void EMatrix::CreateMatrix() {
   }
 }
 
-void EMatrix::DeleteMatrix() {
+void EMatrix::swap(EMatrix& other) noexcept {
+  std::swap(matrix_, other.matrix_);
+  std::swap(rows_, other.rows_);
+  std::swap(cols_, other.cols_);
+  std::swap(inline_size_, other.inline_size_);
+}
+
+void EMatrix::DeleteMatrix() noexcept {
   if (matrix_ != nullptr) {
     operator delete[](matrix_);
     matrix_ = nullptr;
