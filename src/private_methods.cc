@@ -31,9 +31,3 @@ void EMatrix::DeleteMatrix() noexcept {
     // cols_ = 0;
   }
 }
-
-void EMatrix::SumOrSubMatrix(const EMatrix& other, int operation_select) {
-  for (size_t i = 0; i < inline_size_; ++i) {
-    matrix_[0][i] += operation_select * other.matrix_[0][i];
-  }
-}

@@ -4,11 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 
-#define EQUAL_MATRICES 1
-#define DIFFERENT_MATRICES 0
-
-#define MATRICES_SUMMATION 1
-#define MATRICES_SUBTRACTION -1
+#define EPS 1e-8
 
 class EMatrix {
  public:
@@ -42,8 +38,6 @@ class EMatrix {
   void CreateMatrix();
   void swap(EMatrix& other) noexcept;
   void DeleteMatrix() noexcept;
-
-  void SumOrSubMatrix(const EMatrix& other, int operation_select);
 };
 
 #endif  // E_MATRIXPLUS_E_MATRIX_OOP_H_

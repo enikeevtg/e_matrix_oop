@@ -2,6 +2,7 @@
 
 /// @brief Default constructor
 /// https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c45-dont-define-a-default-constructor-that-only-initializes-data-members-use-in-class-member-initializers-instead
+/// https://ru.frwiki.wiki/wiki/Matrice_vide
 EMatrix::EMatrix() {}
 
 /// @brief Parametrized constructor with number of rows and columns
