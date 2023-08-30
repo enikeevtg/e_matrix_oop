@@ -32,6 +32,8 @@ class EMatrix {
   EMatrix& operator=(const EMatrix& other);
   EMatrix& operator=(EMatrix&& other) noexcept;
 
+  double& operator()(int row, int column) const;
+
  private:
   double** matrix_{nullptr};
   int rows_{0};
