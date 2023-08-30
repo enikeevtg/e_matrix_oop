@@ -16,8 +16,11 @@ class EMatrix {
 
   void PrintMatrix();     // TMP METHOD
   double** get_matrix();  // TMP METHOD
-  int get_rows() const;
-  int get_cols() const;
+  int get_rows() const noexcept;
+  int get_cols() const noexcept;
+  void set_rows(int rows);
+  void set_cols(int cols);
+  void set_dimensions(int rows, int cols);
 
   bool EqMatrix(const EMatrix& other);
   void SumMatrix(const EMatrix& other);
