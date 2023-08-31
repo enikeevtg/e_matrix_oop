@@ -14,15 +14,12 @@ class EMatrix {
   EMatrix(EMatrix&& other) noexcept;
   ~EMatrix();
 
-  void PrintMatrix();     // TMP METHOD
-  double** get_matrix();  // TMP METHOD
   int get_rows() const noexcept;
   int get_cols() const noexcept;
   void set_rows(int rows);
   void set_cols(int cols);
-  void set_dimensions(int rows, int cols);
 
-  bool EqMatrix(const EMatrix& other);
+  bool EqMatrix(const EMatrix& other) noexcept;
   void SumMatrix(const EMatrix& other);
   void SubMatrix(const EMatrix& other);
   void MulNumber(const double num) noexcept;
@@ -33,6 +30,10 @@ class EMatrix {
   EMatrix& operator=(EMatrix&& other) noexcept;
 
   double& operator()(int row, int column) const;
+
+  void SetDimensions(int rows, int cols);
+  void PrintMatrix() noexcept;
+  double** get_matrix();  // TMP METHOD
 
  private:
   double** matrix_{nullptr};

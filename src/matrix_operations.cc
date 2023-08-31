@@ -3,7 +3,7 @@
 /// @brief Checks matrices for equality with each other
 /// @param other
 /// @return Checking result: equal - 1, not equal - 0
-bool EMatrix::EqMatrix(const EMatrix& other) {
+bool EMatrix::EqMatrix(const EMatrix& other) noexcept {
   if (rows_ != other.rows_ || cols_ != other.cols_) return false;
 
   bool check = true;

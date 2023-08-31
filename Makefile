@@ -32,7 +32,7 @@ all:
 
 test:
 	$(CC) $(CF) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
-	@./$(TESTS_RUNNER)
+	@./$(TESTS_RUNNER) --gtest_output=xml:output.xml
 #	 > $(TESTS_REPORT)
 	@$(RM) $(TESTS_RUNNER)
 
