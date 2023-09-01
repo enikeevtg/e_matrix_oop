@@ -1,88 +1,166 @@
 #include "u_tests.h"
 
+EMatrixUTests::EMatrixUTests()
+    : uniform_matrices_number_(5),
+      uniform_types_matrices_number_(41),
+      all_test_matrices_(nullptr){};
+
 void EMatrixUTests::SetUp() {
   InitMatrices();
   FillMatrices();
 }
 
 void EMatrixUTests::InitMatrices() {
-  fix_matrix_arr_sz_ = 5;
+  size_t all_test_matrices_sz =
+      uniform_matrices_number_ * uniform_types_matrices_number_;
+  all_test_matrices_ = new EMatrix[all_test_matrices_sz];
+  EMatrix* all_test_matrices_ptr;
 
-  fix_pos_row_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_row_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_pos_x2_row_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_pos_x2_column_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
+  // ROW MATRICES
+  all_test_matrices_ptr = all_test_matrices_;
+  row_matrix_pos_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  row_matrix_pos_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  row_matrix_pos_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  row_matrix_pos_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-  fix_pos_column_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_column_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_x2_row_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_x2_column_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
+  all_test_matrices_ptr += uniform_matrices_number_;
+  row_matrix_neg_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  row_matrix_neg_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  row_matrix_neg_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  row_matrix_neg_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-  fix_unity_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
+  // COLUMN MATRICES
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_pos_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_pos_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_pos_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_pos_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-  fix_pos_square_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_square_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_pos_x2_square_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_x2_square_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_neg_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_neg_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_neg_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  column_matrix_neg_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-  fix_pos_rect_long_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_rect_long_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_pos_x2_rect_long_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_x2_rect_long_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
+  // SQUARE MATRICES
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_pos_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_pos_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_pos_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_pos_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-  fix_pos_rect_high_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_rect_high_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_pos_x2_rect_high_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
-  fix_neg_x2_rect_high_matrix_arr = new EMatrix[fix_matrix_arr_sz_];
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_neg_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_neg_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_neg_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  square_matrix_neg_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-  for (int i = 0; i < fix_matrix_arr_sz_; ++i) {
-    fix_pos_row_matrix_arr[i].SetDimensions(1, i + 1);
-    fix_neg_row_matrix_arr[i].SetDimensions(1, i + 1);
-    fix_pos_x2_row_matrix_arr[i].SetDimensions(1, i + 1);
-    fix_pos_x2_column_matrix_arr[i].SetDimensions(1, i + 1);
+  // VERTICAL RECTANGULAR MATRICES
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_pos_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_pos_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_pos_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_pos_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-    fix_pos_column_matrix_arr[i].SetDimensions(i + 1, 1);
-    fix_neg_column_matrix_arr[i].SetDimensions(i + 1, 1);
-    fix_neg_x2_row_matrix_arr[i].SetDimensions(i + 1, 1);
-    fix_neg_x2_column_matrix_arr[i].SetDimensions(i + 1, 1);
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_neg_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_neg_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_neg_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  vert_rect_matrix_neg_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-    fix_unity_matrix_arr[i].SetDimensions(i + 1, i + 1);
+  // HORIZONTAL RECTANGULAR MATRICES
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_pos_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_pos_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_pos_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_pos_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-    fix_pos_square_matrix_arr[i].SetDimensions(i + 1, i + 1);
-    fix_neg_square_matrix_arr[i].SetDimensions(i + 1, i + 1);
-    fix_pos_x2_square_matrix_arr[i].SetDimensions(i + 1, i + 1);
-    fix_neg_x2_square_matrix_arr[i].SetDimensions(i + 1, i + 1);
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_neg_indices_val_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_neg_indices_val_tr_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_neg_indices_valx2_arr = all_test_matrices_ptr;
+  all_test_matrices_ptr += uniform_matrices_number_;
+  horiz_rect_matrix_neg_indices_valx2_tr_arr = all_test_matrices_ptr;
 
-    fix_pos_rect_long_matrix_arr[i].SetDimensions(i + 2, i + 5);
-    fix_neg_rect_long_matrix_arr[i].SetDimensions(i + 2, i + 5);
-    fix_pos_x2_rect_long_matrix_arr[i].SetDimensions(i + 2, i + 5);
-    fix_neg_x2_rect_long_matrix_arr[i].SetDimensions(i + 2, i + 5);
+  // UNITY MATRICES
+  all_test_matrices_ptr += uniform_matrices_number_;
+  unity_matrix_arr = all_test_matrices_ptr;
+
+  for (int i = 0; i < uniform_matrices_number_; ++i) {
+    row_matrix_pos_indices_val_arr[i].SetDimensions(1, i + 1);
+    row_matrix_pos_indices_val_tr_arr[i].SetDimensions(1, i + 1);
+    row_matrix_pos_indices_valx2_arr[i].SetDimensions(1, i + 1);
+    row_matrix_pos_indices_valx2_tr_arr[i].SetDimensions(1, i + 1);
+
+    row_matrix_neg_indices_val_arr[i].SetDimensions(1, i + 1);
+    row_matrix_neg_indices_val_tr_arr[i].SetDimensions(1, i + 1);
+    row_matrix_neg_indices_valx2_arr[i].SetDimensions(1, i + 1);
+    row_matrix_neg_indices_valx2_tr_arr[i].SetDimensions(1, i + 1);
+
+    column_matrix_pos_indices_val_arr[i].SetDimensions(i + 1, 1);
+    column_matrix_pos_indices_val_tr_arr[i].SetDimensions(i + 1, 1);
+    column_matrix_pos_indices_valx2_arr[i].SetDimensions(i + 1, 1);
+    column_matrix_pos_indices_valx2_tr_arr[i].SetDimensions(i + 1, 1);
+
+    column_matrix_neg_indices_val_arr[i].SetDimensions(i + 1, 1);
+    column_matrix_neg_indices_val_tr_arr[i].SetDimensions(i + 1, 1);
+    column_matrix_neg_indices_valx2_arr[i].SetDimensions(i + 1, 1);
+    column_matrix_neg_indices_valx2_tr_arr[i].SetDimensions(i + 1, 1);
+
+    unity_matrix_arr[i].SetDimensions(i + 1, i + 1);
   }
 }
 
 void EMatrixUTests::FillMatrices() {
-  for (int i = 0; i < fix_matrix_arr_sz_; ++i) {
+  for (int i = 0; i < uniform_matrices_number_; ++i) {
     for (int j = 1; j <= i + 1; ++j) {
-      fix_pos_row_matrix_arr[i](1, j) = 10 * j + j;
-      fix_pos_row_matrix_arr[i](j, 1) = 10 * j + j;
-      fix_unity_matrix_arr[i](j, j) = 1;
+      row_matrix_pos_indices_val_arr[i](1, j) = 10 * j + j;
+      column_matrix_pos_indices_val_arr[i](j, 1) = 10 * j + j;
+      unity_matrix_arr[i](j, j) = 1;
     }
 
     for (int j = 1; j <= i + 1; ++j) {
       for (int k = 1; k <= i + 1; ++k) {
-        fix_pos_square_matrix_arr[i](j, k) = j * 10 + k;
-        fix_neg_square_matrix_arr[i](j, k) = -(j * 10 + k);
-        fix_pos_x2_square_matrix_arr[i](j, k) = 2 * (j * 10 + k);
-        fix_neg_x2_square_matrix_arr[i](j, k) = -2 * (j * 10 + k);
+        square_matrix_pos_indices_val_arr[i](j, k) = j * 10 + k;
+        square_matrix_neg_indices_val_arr[i](j, k) = -(j * 10 + k);
+        square_matrix_pos_indices_valx2_arr[i](j, k) = 2 * (j * 10 + k);
+        square_matrix_neg_indices_valx2_arr[i](j, k) = -2 * (j * 10 + k);
       }
     }
-  }  // for (int i = 0; i < fix_matrix_arr_sz_; ++i)
+  }  // for (int i = 0; i < matrix_arr_sz_; ++i)
 }
 
 void EMatrixUTests::TearDown() {
-  delete[] fix_pos_square_matrix_arr;
-  delete[] fix_neg_square_matrix_arr;
-  delete[] fix_unity_matrix_arr;
+  delete[] all_test_matrices_;
 }
 
 INSTANTIATE_TEST_SUITE_P(EMatrixUTests, EMatrixParametrizedUTest,
