@@ -12,6 +12,8 @@ class EMatrix {
   EMatrix(int rows, int cols);
   EMatrix(const EMatrix& other);
   EMatrix(EMatrix&& other) noexcept;
+  EMatrix& operator=(const EMatrix& other);
+  EMatrix& operator=(EMatrix&& other) noexcept;
   ~EMatrix();
 
   int get_rows() const noexcept;
@@ -26,9 +28,6 @@ class EMatrix {
   void MulMatrix(const EMatrix& other);
   EMatrix Transpose() noexcept;
 
-  EMatrix& operator=(const EMatrix& other);
-  EMatrix& operator=(EMatrix&& other) noexcept;
-
   double& operator()(int row, int column) const;
 
   void SetDimensions(int rows, int cols);
@@ -42,8 +41,8 @@ class EMatrix {
   size_t inline_size_{0};
 
   void CreateMatrix();
-  void swap(EMatrix& other) noexcept;
   void DeleteMatrix() noexcept;
+  void swap(EMatrix& other) noexcept;
 };
 
 #endif  // E_MATRIXPLUS_E_MATRIX_OOP_H_

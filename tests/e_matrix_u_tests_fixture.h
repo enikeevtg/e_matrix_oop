@@ -1,20 +1,22 @@
-#ifndef E_MATRIXPLUS_TESTS_UNIT_TESTS_H_
-#define E_MATRIXPLUS_TESTS_UNIT_TESTS_H_
+#ifndef E_MATRIXPLUS_TESTS_U_TESTS_H_
+#define E_MATRIXPLUS_TESTS_U_TESTS_H_
 
 #include <gtest/gtest.h>
 
 #include "../e_matrix_oop.h"
 
-class EMatrixUTests : public testing::Test {
- public:
-  EMatrixUTests();
+class EMatrixUTestsFixture : public ::testing::TestWithParam<int> {};
+
+/*
 
  protected:
-  void SetUp() override;
-  void TearDown() override;
+  EMatrixUTestsFixture();
+  ~EMatrixUTestsFixture();
 
-  void InitMatrices();
-  void FillMatrices();
+  // void SetUp() override;
+  // void TearDown() override;
+  void InitTestMatrices();
+  void FillTestMatrices();
 
   int uniform_matrices_number_;
   int uniform_types_matrices_number_;
@@ -49,7 +51,6 @@ class EMatrixUTests : public testing::Test {
   // [-11*2 -21*2 ...]^T, [-11*2 -21*2 ...]
   EMatrix* column_matrix_neg_indices_valx2_arr;
   EMatrix* column_matrix_neg_indices_valx2_tr_arr;
-
 
   // SQUARE MATRICES
   // [[11 12 ...][21 22 ...] ...]
@@ -98,9 +99,7 @@ class EMatrixUTests : public testing::Test {
 
   // UNITY MATRICES
   EMatrix* unity_matrix_arr;
-};
 
-class EMatrixParametrizedUTest : public EMatrixUTests,
-                                 public testing::WithParamInterface<int> {};
+*/
 
-#endif  // E_MATRIXPLUS_TESTS_UNIT_TESTS_H_
+#endif  // E_MATRIXPLUS_TESTS_U_TESTS_H_
