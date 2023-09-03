@@ -1,7 +1,11 @@
 #include "e_matrix_u_tests_fixture.h"
 
-INSTANTIATE_TEST_SUITE_P(EMatrixUTestsFixture, EMatrixUTestsFixture,
-                         testing::Range(0, 5));
+void EMatrixUTestsFixture::SetUp() {
+  // EMatrix* ut_matrices_arr_ = ;
+  // EMatrix* ut_matrices_tr_arr_ = ;
+}
+
+
 
 /*
 

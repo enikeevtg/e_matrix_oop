@@ -5,7 +5,7 @@
 
 #include "../e_matrix_oop.h"
 
-class EMatrixUTestsEnvironment : public ::testing::Environment {
+class TestsEnvironment : public ::testing::Environment {
  public:
   enum EMatrixTypes {
     kRowPosElems = 0,
@@ -37,27 +37,34 @@ class EMatrixUTestsEnvironment : public ::testing::Environment {
 
     kEMatrixTypesNumber
   };
-
+ 
   void SetUp() override;
   void TearDown() override;
 
-  void TestMatricesArraysMemAlloc();
-  void SetTestMatricesDimensions();
-  void SetRowMatricesDimensions(int& n);
-  void SetColumnMatricesDimensions(int& n);
-  void SetSquareMatricesDimensions(int& n);
-  void SetRectMatricesDimensions(int& n);
-  void FillTestMatrices();
-  void FillRowMatrices(int& n);
-  void FillColumnMatrices(int& n);
-  void FillSquareMatrices(int& n);
-  void FillRectMatrices(int& n);
-  void TestMatricesArrayDel(EMatrix*& matrices_array);
+  // static void GetMatrices(int& uform_matrices_number_, EMatrix* ut_matrices_arr_, EMatrix* ut_matrices_tr_arr_);
+  // static void GetMatrices();
 
-  int uniform_matrices_number_{5};
-  EMatrix* ut_matrices_arr_{nullptr};
-  EMatrix* ut_matrices_tr_arr_{nullptr};
+  static void TestMatricesArraysMemAlloc();
+  static void SetTestMatricesDimensions();
+  static void SetRowMatricesDimensions(int& n);
+  static void SetColumnMatricesDimensions(int& n);
+  static void SetSquareMatricesDimensions(int& n);
+  static void SetRectMatricesDimensions(int& n);
+  static void FillTestMatrices();
+  static void FillRowMatrices(int& n);
+  static void FillColumnMatrices(int& n);
+  static void FillSquareMatrices(int& n);
+  static void FillRectMatrices(int& n);
+  static void TestMatricesArrayDel(EMatrix*& matrices_array);
+
+  // EMatrix*& GetMatrices();
+
+  static inline int uform_matrices_number_{0};
+  static inline EMatrix* ut_matrices_arr_{nullptr};
+  static inline EMatrix* ut_matrices_tr_arr_{nullptr};
 };
+
+// ::testing::Environment* const env = ::testing::AddGlobalTestEnvironment(new TestsEnvironment);
 
 #endif  // E_MATRIXPLUS_TESTS_TESTS_ENV_H_
 

@@ -1,4 +1,7 @@
-#include "u_tests.h"
+#include <limits>
+
+#include "e_matrix_u_tests_environment.h"
+// #include "e_matrix_u_tests_fixture.h"
 
 TEST(ConstructorsTests, DefaultConstructor) {
   EMatrix matrix;
@@ -46,4 +49,12 @@ TEST(ConstructorsTests, ParametrizedConstructorOk3) {
   EMatrix matrix(2, 3);
   EXPECT_EQ(2, matrix.get_rows());
   EXPECT_EQ(3, matrix.get_cols());
+}
+
+TEST(ConstructorsTests, ParametrizedConstructorOk4) {
+
+    EMatrix matrix(100, 101);
+    EXPECT_EQ(100, matrix.get_rows());
+    EXPECT_EQ(101, matrix.get_cols());
+
 }

@@ -1,31 +1,14 @@
-#include "u_tests.h"
+#include "e_matrix_u_tests_environment.h"
+#include "e_matrix_u_tests_fixture.h"
 
 TEST_P(EMatrixUTestsFixture, EqMatrixPosMatricesTrue) {
   int i = GetParam();
-  EMatrix test_matrix{square_matrix_pos_indices_val_arr[i]};
-  EXPECT_TRUE(square_matrix_pos_indices_val_arr[i].EqMatrix(test_matrix));
-}
-
-TEST_P(EMatrixUTestsFixture, EqMatrixNegMatricesTrue) {
-  int i = GetParam();
-  EMatrix test_matrix{square_matrix_neg_indices_val_arr[i]};
-  EXPECT_TRUE(square_matrix_neg_indices_val_arr[i].EqMatrix(test_matrix));
+  EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i]};
+  EXPECT_TRUE(TestsEnvironment::ut_matrices_arr_[i].EqMatrix(test_matrix));
 }
 
 TEST_P(EMatrixUTestsFixture, EqMatrixPosMatricesFalse) {
   int i = GetParam();
-  EMatrix test_matrix{square_matrix_neg_indices_val_arr[i]};
-  EXPECT_FALSE(square_matrix_pos_indices_val_arr[i].EqMatrix(test_matrix));
-}
-
-TEST_P(EMatrixUTestsFixture, EqMatrixNegMatricesFalse) {
-  int i = GetParam();
-  EMatrix test_matrix{square_matrix_pos_indices_val_arr[i]};
-  EXPECT_FALSE(square_matrix_neg_indices_val_arr[i].EqMatrix(test_matrix));
-}
-
-TEST_P(EMatrixUTestsFixture, EqMatrixMatricesDimensionsFalse) {
-  int i = GetParam();
-  EXPECT_FALSE(row_matrix_pos_indices_val_arr[i].EqMatrix(
-      column_matrix_pos_indices_val_arr[i]));
+  EMatrix test_matrix{TestsEnvironment::ut_matrices_tr_arr_[i]};
+  EXPECT_FALSE(TestsEnvironment::ut_matrices_arr_[i].EqMatrix(test_matrix));
 }

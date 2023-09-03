@@ -18,6 +18,7 @@ SRC = $(wildcard $(SRC_DIR)*.cc)
 
 TESTS_DIR = ./tests/
 TESTS_SRC = $(wildcard $(TESTS_DIR)*.cc)
+# $(wildcard $(TESTS_DIR)*.h)
 TESTS_RUNNER = tests_runner
 TESTS_REPORT = u_tests_report.txt
 
@@ -30,11 +31,16 @@ EXE = a.out $(MAN_TEST_RUNNER) $(TESTS_RUNNER)
 # BUILD
 all:
 
+lib: e_matrix_oop.a
+
+e_matrix_oop.a: clean
+
 test:
-	$(CC) $(CF) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
-	@./$(TESTS_RUNNER) --gtest_output=xml:output.xml
+	$(CC) $(CF) $(STD) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
+	@./$(TESTS_RUNNER)
+#	 --gtest_output=xml:output.xml
 #	 > $(TESTS_REPORT)
-	@$(RM) $(TESTS_RUNNER)
+#	@$(RM) $(TESTS_RUNNER)
 
 e_matrix_oop.a:
 

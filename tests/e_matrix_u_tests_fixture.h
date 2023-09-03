@@ -3,12 +3,15 @@
 
 #include <gtest/gtest.h>
 
-#include "../e_matrix_oop.h"
+#include "e_matrix_u_tests_environment.h"
 
-class EMatrixUTestsFixture : public ::testing::TestWithParam<int> {};
+class EMatrixUTestsFixture : public ::testing::TestWithParam<int> {
+ protected:
+  void SetUp();
+
+};
 
 /*
-
  protected:
   EMatrixUTestsFixture();
   ~EMatrixUTestsFixture();
