@@ -4,14 +4,15 @@ void TestsEnvironment::SetUp() {
   TestMatricesArraysMemAlloc();
   SetTestMatricesDimensions();
   FillTestMatrices();
-  for (int i = 0; i < uform_matrices_number_ * kEMatrixTypesNumber; ++i) {
-    std::cout << i << std::endl;
-    ut_matrices_arr_[i].PrintMatrix();
-    ut_matrices_tr_arr_[i].PrintMatrix();
-  }
-  for (int i = 0; i < uform_matrices_number_; ++i) {
-    ut_unity_matrices_arr_[i].PrintMatrix();
-  }
+  // for (int i = 0; i < uform_matrices_number_ /* * kEMatrixTypesNumber*/; ++i)
+  // {
+  //   std::cout << i << std::endl;
+  //   ut_matrices_arr_[i].PrintMatrix();
+  //   ut_matrices_tr_arr_[i].PrintMatrix();
+  // }
+  // for (int i = 0; i < uform_matrices_number_; ++i) {
+  //   ut_unity_matrices_arr_[i].PrintMatrix();
+  // }
 }
 
 void TestsEnvironment::TestMatricesArraysMemAlloc() {
