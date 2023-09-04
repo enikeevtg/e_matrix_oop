@@ -69,13 +69,13 @@ void TestsEnvironment::SetRectMatricesDimensions(int& n) {
   for (; type <= kVertRectNegElemsx2; ++type) {
     for (int i = 0; i < n; ++i) {
       ut_matrices_arr_[type * n + i].SetDimensions(i + 4, i + 2);
-      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 4, i + 2);
+      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 2, i + 4);
     }
   }
   for (; type <= kHorRectNegElemsx2; ++type) {
     for (int i = 0; i < n; ++i) {
       ut_matrices_arr_[type * n + i].SetDimensions(i + 2, i + 4);
-      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 2, i + 4);
+      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 4, i + 2);
     }
   }
 }
@@ -142,12 +142,12 @@ void TestsEnvironment::FillRectMatrices(int& n) {
         ut_matrices_arr_[kVertRectNegElems * n + k](i, j) = -(i * 10 + j);
         ut_matrices_arr_[kVertRectNegElemsx2 * n + k](i, j) = -2 * (i * 10 + j);
 
-        ut_matrices_tr_arr_[kVertRectPosElems * n + k](i, j) = j * 10 + i;
-        ut_matrices_tr_arr_[kVertRectPosElemsx2 * n + k](i, j) =
-            2 * (j * 10 + i);
-        ut_matrices_tr_arr_[kVertRectNegElems * n + k](i, j) = -(j * 10 + i);
-        ut_matrices_tr_arr_[kVertRectNegElemsx2 * n + k](i, j) =
-            -2 * (j * 10 + i);
+        ut_matrices_tr_arr_[kVertRectPosElems * n + k](j, i) = i * 10 + j;
+        ut_matrices_tr_arr_[kVertRectPosElemsx2 * n + k](j, i) =
+            2 * (i * 10 + j);
+        ut_matrices_tr_arr_[kVertRectNegElems * n + k](j, i) = -(i * 10 + j);
+        ut_matrices_tr_arr_[kVertRectNegElemsx2 * n + k](j, i) =
+            -2 * (i * 10 + j);
       }
     }
 
@@ -159,12 +159,12 @@ void TestsEnvironment::FillRectMatrices(int& n) {
         ut_matrices_arr_[kHorRectNegElems * n + k](i, j) = -(i * 10 + j);
         ut_matrices_arr_[kHorRectNegElemsx2 * n + k](i, j) = -2 * (i * 10 + j);
 
-        ut_matrices_tr_arr_[kHorRectPosElems * n + k](i, j) = j * 10 + i;
-        ut_matrices_tr_arr_[kHorRectPosElemsx2 * n + k](i, j) =
-            2 * (j * 10 + i);
-        ut_matrices_tr_arr_[kHorRectNegElems * n + k](i, j) = -(j * 10 + i);
-        ut_matrices_tr_arr_[kHorRectNegElemsx2 * n + k](i, j) =
-            -2 * (j * 10 + i);
+        ut_matrices_tr_arr_[kHorRectPosElems * n + k](j, i) = i * 10 + j;
+        ut_matrices_tr_arr_[kHorRectPosElemsx2 * n + k](j, i) =
+            2 * (i * 10 + j);
+        ut_matrices_tr_arr_[kHorRectNegElems * n + k](j, i) = -(i * 10 + j);
+        ut_matrices_tr_arr_[kHorRectNegElemsx2 * n + k](j, i) =
+            -2 * (i * 10 + j);
       }
     }
   }

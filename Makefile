@@ -1,15 +1,24 @@
-.PHONY: all clean test e_matrix_oop.a
+.PHONY: all clean test e_matrix_oop.a gcov gcov_report
 
 # UTILITIES
 CC = gcc
-LEAKS = leaks -atExit -- #
 RM = rm -rf
 OPEN_TXT = open -e
+OS := $(shell uname)
+ifeq ($(OS), Darwin)
+	LEAKS = CK_FORK=no leaks --atExit -- 
+	REPORT_OPEN = open
+else ifeq ($(OS), Linux)
+	LEAKS =
+	REPORT_OPEN = xdg-open
+endif
+
 
 # UTITLITIES OPTIONS
 CF = -Wall -Werror -Wextra -lstdc++
 STD = -std=c++17 -pedantic
 GTESTF = -lgtest -pthread
+GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 
 # FILENAMES
 TARGET = e_matrix_oop.a
@@ -42,9 +51,16 @@ test:
 #	 > $(TESTS_REPORT)
 #	@$(RM) $(TESTS_RUNNER)
 
-e_matrix_oop.a:
+gcov: gcov_report
 
-lib: e_matrix_oop.a
+gcov_report: clean
+	@$(CC) $(CF) $(STD) $(GTESTF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
+	./$(TESTS_RUNNER)
+	@lcov -t "./gcov" -o report.info --no-external -c -d . --ignore-errors mismatch
+	@genhtml -o report report.info
+	@gcovr -r . --html-details -o ./report/coverage_report.html
+	@$(REPORT_OPEN) ./report/index.html
+	@rm -rf *.gcno *.gcda gcov_test *.info
 
 # SERVICE
 style:
@@ -54,8 +70,11 @@ gost:
 	find . -name "*.h" -o -name "*.cc" | xargs clang-format --style=google -i
 
 clean:
-	$(RM) $(EXE)
+	@rm -rf $(TARGET)
+	@$(RM) $(EXE)
 	@$(RM) *.txt
+	@rm -rf *.out *.dSYM ./tests/*.dSYM ./units/*dSYM
+	@rm -rf *.gcno *.gcda ./report gcov_test *.info
 
 # DEVELOPING TESTS
 man:

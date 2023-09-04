@@ -1,5 +1,5 @@
-#ifndef E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURE_FULL_H_
-#define E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURE_FULL_H_
+#ifndef E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURES_H_
+#define E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURES_H_
 
 #include <gtest/gtest.h>
 
@@ -8,5 +8,6 @@
 class EMatrixEqMatrixSuite : public ::testing::TestWithParam<int> {};
 class EMatrixSumSubTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixMulTSuite : public ::testing::TestWithParam<int> {};
+class EMatrixTransposeTSuite : public ::testing::TestWithParam<int> {};
 
-#endif  // E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURE_FULL_H_
+#endif  // E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURES_H_
