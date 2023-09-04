@@ -7,5 +7,6 @@
 
 class EMatrixEqMatrixSuite : public ::testing::TestWithParam<int> {};
 class EMatrixSumSubTSuite : public ::testing::TestWithParam<int> {};
+class EMatrixMulTSuite : public ::testing::TestWithParam<int> {};
 
 #endif  // E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURE_FULL_H_

@@ -1,7 +1,7 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
-TEST_P(EMatrixSumSubTSuite, SumMatrix) {
+TEST_P(EMatrixSumSubTSuite, SumMatrixOk) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matrices_number_;
   int i_src = i / n / 2 * 2 * n + i % n;
@@ -13,7 +13,16 @@ TEST_P(EMatrixSumSubTSuite, SumMatrix) {
   EXPECT_TRUE(TestsEnvironment::ut_matrices_arr_[i_res].EqMatrix(test_matrix));
 }
 
-TEST_P(EMatrixSumSubTSuite, SubMatrix) {
+TEST_P(EMatrixSumSubTSuite, SumMatrixThrow) {
+  int i = GetParam();
+
+  EMatrix test_matrix;
+
+  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i].SumMatrix(test_matrix), std::range_error);
+}
+
+
+TEST_P(EMatrixSumSubTSuite, SubMatrixOk) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matrices_number_;
   int i_src = (i / n / 2 * 2 + 1) * n + i % n;
@@ -23,4 +32,12 @@ TEST_P(EMatrixSumSubTSuite, SubMatrix) {
   test_matrix.SubMatrix(TestsEnvironment::ut_matrices_arr_[i_res]);
 
   EXPECT_TRUE(TestsEnvironment::ut_matrices_arr_[i_res].EqMatrix(test_matrix));
+}
+
+TEST_P(EMatrixSumSubTSuite, SubMatrixThrow) {
+  int i = GetParam();
+
+  EMatrix test_matrix;
+
+  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i].SubMatrix(test_matrix), std::range_error);
 }
