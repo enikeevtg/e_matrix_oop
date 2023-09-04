@@ -52,9 +52,7 @@ TEST(ConstructorsTests, ParametrizedConstructorOk3) {
 }
 
 TEST(ConstructorsTests, ParametrizedConstructorOk4) {
-
-    EMatrix matrix(100, 101);
-    EXPECT_EQ(100, matrix.get_rows());
-    EXPECT_EQ(101, matrix.get_cols());
-
+  EMatrix matrix(100, 101);
+  EXPECT_EQ(100, matrix.get_rows());
+  EXPECT_EQ(101, matrix.get_cols());
 }

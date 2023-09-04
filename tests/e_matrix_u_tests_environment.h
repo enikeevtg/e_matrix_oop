@@ -23,8 +23,6 @@ class TestsEnvironment : public ::testing::Environment {
     kSquareNegElems,
     kSquareNegElemsx2,
 
-    kUnity,
-
     kVertRectPosElems,
     kVertRectPosElemsx2,
     kVertRectNegElems,
@@ -37,12 +35,12 @@ class TestsEnvironment : public ::testing::Environment {
 
     kEMatrixTypesNumber
   };
- 
+
   void SetUp() override;
   void TearDown() override;
 
-  // static void GetMatrices(int& uform_matrices_number_, EMatrix* ut_matrices_arr_, EMatrix* ut_matrices_tr_arr_);
-  // static void GetMatrices();
+  // static void GetMatrices(int& uform_matrices_number_, EMatrix*
+  // ut_matrices_arr_, EMatrix* ut_matrices_tr_arr_); static void GetMatrices();
 
   static void TestMatricesArraysMemAlloc();
   static void SetTestMatricesDimensions();
@@ -59,12 +57,11 @@ class TestsEnvironment : public ::testing::Environment {
 
   // EMatrix*& GetMatrices();
 
-  static inline int uform_matrices_number_{0};
+  static inline int uform_matrices_number_{5};
+  static inline EMatrix* ut_unity_matrices_arr_{nullptr};
   static inline EMatrix* ut_matrices_arr_{nullptr};
   static inline EMatrix* ut_matrices_tr_arr_{nullptr};
 };
-
-// ::testing::Environment* const env = ::testing::AddGlobalTestEnvironment(new TestsEnvironment);
 
 #endif  // E_MATRIXPLUS_TESTS_TESTS_ENV_H_
 

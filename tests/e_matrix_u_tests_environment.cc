@@ -1,51 +1,45 @@
 #include "e_matrix_u_tests_environment.h"
 
 void TestsEnvironment::SetUp() {
-  // uform_matrices_number_ = 4;
-  // ut_matrices_arr_ = nullptr;
-  // ut_matrices_tr_arr_ = nullptr;
-  // GetMatrices(uform_matrices_number_, ut_matrices_arr_, ut_matrices_tr_arr_);
-  // GetMatrices();
-  uform_matrices_number_ = 4;
   TestMatricesArraysMemAlloc();
   SetTestMatricesDimensions();
   FillTestMatrices();
+  for (int i = 0; i < uform_matrices_number_ * kEMatrixTypesNumber; ++i) {
+    std::cout << i << std::endl;
+    ut_matrices_arr_[i].PrintMatrix();
+    ut_matrices_tr_arr_[i].PrintMatrix();
+  }
+  for (int i = 0; i < uform_matrices_number_; ++i) {
+    ut_unity_matrices_arr_[i].PrintMatrix();
+  }
 }
 
-// void TestsEnvironment::GetMatrices(int& uform_matrices_number_, EMatrix* ut_matrices_arr_, EMatrix* ut_matrices_tr_arr_) {
-//   uform_matrices_number_;
-//   ut_matrices_arr_;
-//   ut_matrices_tr_arr_;
-// };
-
-// void TestsEnvironment::GetMatrices() {
-//   TestMatricesArraysMemAlloc();
-//   SetTestMatricesDimensions();
-//   FillTestMatrices();
-// };
-
-
 void TestsEnvironment::TestMatricesArraysMemAlloc() {
-  ut_matrices_arr_ = new EMatrix[4 * uform_matrices_number_];
+  ut_unity_matrices_arr_ = new EMatrix[uform_matrices_number_];
+  ut_matrices_arr_ = new EMatrix[kEMatrixTypesNumber * uform_matrices_number_];
   ut_matrices_tr_arr_ =
-      new EMatrix[4 * uform_matrices_number_];
-  // ut_matrices_arr_ = new EMatrix[kEMatrixTypesNumber * uform_matrices_number_];
-  // ut_matrices_tr_arr_ =
-  //     new EMatrix[kEMatrixTypesNumber * uform_matrices_number_];
+      new EMatrix[kEMatrixTypesNumber * uform_matrices_number_];
 }
 
 void TestsEnvironment::SetTestMatricesDimensions() {
   SetRowMatricesDimensions(uform_matrices_number_);
-  // SetColumnMatricesDimensions(uform_matrices_number_);
-  // SetSquareMatricesDimensions(uform_matrices_number_);
-  // SetRectMatricesDimensions(uform_matrices_number_);
+  SetColumnMatricesDimensions(uform_matrices_number_);
+  SetSquareMatricesDimensions(uform_matrices_number_);
+  SetRectMatricesDimensions(uform_matrices_number_);
+}
+
+void TestsEnvironment::FillTestMatrices() {
+  FillRowMatrices(uform_matrices_number_);
+  FillColumnMatrices(uform_matrices_number_);
+  FillSquareMatrices(uform_matrices_number_);
+  FillRectMatrices(uform_matrices_number_);
 }
 
 void TestsEnvironment::SetRowMatricesDimensions(int& n) {
   for (int type = kRowPosElems; type <= kRowNegElemsx2; ++type) {
     for (int i = 0; i < n; ++i) {
-      ut_matrices_arr_[type * n + i].SetDimensions(1, i + 1);
-      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 1, 1);
+      ut_matrices_arr_[type * n + i].SetDimensions(1, i + 2);
+      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 2, 1);
     }
   }
 }
@@ -53,15 +47,16 @@ void TestsEnvironment::SetRowMatricesDimensions(int& n) {
 void TestsEnvironment::SetColumnMatricesDimensions(int& n) {
   for (int type = kColumnPosElems; type <= kColumnNegElemsx2; ++type) {
     for (int i = 0; i < n; ++i) {
-      ut_matrices_arr_[type * n + i].SetDimensions(i + 1, 1);
-      ut_matrices_tr_arr_[type * n + i].SetDimensions(1, i + 1);
+      ut_matrices_arr_[type * n + i].SetDimensions(i + 2, 1);
+      ut_matrices_tr_arr_[type * n + i].SetDimensions(1, i + 2);
     }
   }
 }
 
 void TestsEnvironment::SetSquareMatricesDimensions(int& n) {
-  for (int type = kSquarePosElems; type <= kUnity; ++type) {
-    for (int i = 0; i < n; ++i) {
+  for (int i = 0; i < n; ++i) {
+    ut_unity_matrices_arr_[i].SetDimensions(i + 2, i + 2);
+    for (int type = kSquarePosElems; type <= kSquareNegElemsx2; ++type) {
       ut_matrices_arr_[type * n + i].SetDimensions(i + 2, i + 2);
       ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 2, i + 2);
     }
@@ -69,30 +64,24 @@ void TestsEnvironment::SetSquareMatricesDimensions(int& n) {
 }
 
 void TestsEnvironment::SetRectMatricesDimensions(int& n) {
-  for (int type = kVertRectPosElems; type <= kVertRectNegElemsx2; ++type) {
+  int type = kVertRectPosElems;
+  for (; type <= kVertRectNegElemsx2; ++type) {
     for (int i = 0; i < n; ++i) {
       ut_matrices_arr_[type * n + i].SetDimensions(i + 4, i + 2);
       ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 4, i + 2);
     }
   }
-  for (int type = kHorRectPosElems; type <= kHorRectNegElemsx2; ++type) {
+  for (; type <= kHorRectNegElemsx2; ++type) {
     for (int i = 0; i < n; ++i) {
-      ut_matrices_arr_[type * n + i].SetDimensions(i + 4, i + 2);
-      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 4, i + 2);
+      ut_matrices_arr_[type * n + i].SetDimensions(i + 2, i + 4);
+      ut_matrices_tr_arr_[type * n + i].SetDimensions(i + 2, i + 4);
     }
   }
-}
-
-void TestsEnvironment::FillTestMatrices() {
-  FillRowMatrices(uform_matrices_number_);
-  // FillColumnMatrices(uform_matrices_number_);
-  // FillSquareMatrices(uform_matrices_number_);
-  // FillRectMatrices(uform_matrices_number_);
 }
 
 void TestsEnvironment::FillRowMatrices(int& n) {
   for (int k = 0; k < n; ++k) {
-    for (int i = 1; i <= k + 1; ++i) {
+    for (int i = 1; i <= k + 2; ++i) {
       ut_matrices_arr_[kRowPosElems * n + k](1, i) = 10 + i;
       ut_matrices_arr_[kRowPosElemsx2 * n + k](1, i) = 2 * (10 + i);
       ut_matrices_arr_[kRowNegElems * n + k](1, i) = -(10 + i);
@@ -108,7 +97,7 @@ void TestsEnvironment::FillRowMatrices(int& n) {
 
 void TestsEnvironment::FillColumnMatrices(int& n) {
   for (int k = 0; k < n; ++k) {
-    for (int i = 1; i <= k + 1; ++i) {
+    for (int i = 1; i <= k + 2; ++i) {
       ut_matrices_arr_[kColumnPosElems * n + k](i, 1) = i * 10 + 1;
       ut_matrices_arr_[kColumnPosElemsx2 * n + k](i, 1) = 2 * (i * 10 + 1);
       ut_matrices_arr_[kColumnNegElems * n + k](i, 1) = -(i * 10 + 1);
@@ -125,8 +114,7 @@ void TestsEnvironment::FillColumnMatrices(int& n) {
 void TestsEnvironment::FillSquareMatrices(int& n) {
   for (int k = 0; k < n; ++k) {
     for (int i = 1; i <= k + 2; ++i) {
-      ut_matrices_arr_[kUnity * n + k](i, i) = 1;
-      ut_matrices_tr_arr_[kUnity * n + k](i, i) = 1;
+      ut_unity_matrices_arr_[k](i, i) = 1;
       for (int j = 1; j <= k + 2; ++j) {
         ut_matrices_arr_[kSquarePosElems * n + k](i, j) = i * 10 + j;
         ut_matrices_arr_[kSquarePosElemsx2 * n + k](i, j) = 2 * (i * 10 + j);

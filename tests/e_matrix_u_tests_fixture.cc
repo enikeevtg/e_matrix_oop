@@ -5,8 +5,6 @@ void EMatrixUTestsFixture::SetUp() {
   // EMatrix* ut_matrices_tr_arr_ = ;
 }
 
-
-
 /*
 
 EMatrixUTestsFixture::EMatrixUTestsFixture()

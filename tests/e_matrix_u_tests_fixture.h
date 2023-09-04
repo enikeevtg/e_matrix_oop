@@ -8,7 +8,6 @@
 class EMatrixUTestsFixture : public ::testing::TestWithParam<int> {
  protected:
   void SetUp();
-
 };
 
 /*
