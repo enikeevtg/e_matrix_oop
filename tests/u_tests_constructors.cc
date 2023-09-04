@@ -1,7 +1,4 @@
-#include <limits>
-
 #include "e_matrix_u_tests_environment.h"
-// #include "e_matrix_u_tests_fixture.h"
 
 TEST(ConstructorsTests, DefaultConstructor) {
   EMatrix matrix;

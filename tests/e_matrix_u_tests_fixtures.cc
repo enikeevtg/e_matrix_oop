@@ -19,3 +19,8 @@ INSTANTIATE_TEST_SUITE_P(
     EMatrixUTests, EMatrixTransposeTSuite,
     testing::Range(0, TestsEnvironment::uform_matrices_number_*
                           TestsEnvironment::kEMatrixTypesNumber));
+
+INSTANTIATE_TEST_SUITE_P(
+    EMatrixUTests, EMatrixOperatorsOverloadsTSuite,
+    testing::Range(0, TestsEnvironment::uform_matrices_number_*
+                          TestsEnvironment::kEMatrixTypesNumber));

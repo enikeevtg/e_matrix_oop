@@ -10,4 +10,6 @@ class EMatrixSumSubTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixMulTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixTransposeTSuite : public ::testing::TestWithParam<int> {};
 
+class EMatrixOperatorsOverloadsTSuite : public ::testing::TestWithParam<int> {};
+
 #endif  // E_MATRIXPLUS_TESTS_E_MATRIX_U_TESTS_FIXTURES_H_

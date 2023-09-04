@@ -35,7 +35,7 @@ TEST_P(EMatrixMulTSuite, MulMatrixNillsOk) {
   EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i].get_cols(),
                       TestsEnvironment::ut_matrices_arr_[i].get_rows()};
   EMatrix test_matrix_nills{test_matrix.get_rows(),
-                      TestsEnvironment::ut_matrices_arr_[i].get_cols()};
+                            TestsEnvironment::ut_matrices_arr_[i].get_cols()};
 
   test_matrix.MulMatrix(TestsEnvironment::ut_matrices_arr_[i]);
   EXPECT_TRUE(test_matrix.EqMatrix(test_matrix_nills));
