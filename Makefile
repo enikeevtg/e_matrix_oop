@@ -47,6 +47,7 @@ e_matrix_oop.a: clean
 test:
 	$(CC) $(CF) $(STD) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
 	@./$(TESTS_RUNNER)
+#	 > $(TESTS_REPORT)
 #	 --gtest_output=xml:output.xml
 #	 > $(TESTS_REPORT)
 #	@$(RM) $(TESTS_RUNNER)

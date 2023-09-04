@@ -18,9 +18,9 @@ TEST_P(EMatrixSumSubTSuite, SumMatrixThrow) {
 
   EMatrix test_matrix;
 
-  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i].SumMatrix(test_matrix), std::range_error);
+  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i].SumMatrix(test_matrix),
+               std::range_error);
 }
-
 
 TEST_P(EMatrixSumSubTSuite, SubMatrixOk) {
   int i = GetParam();
@@ -39,5 +39,6 @@ TEST_P(EMatrixSumSubTSuite, SubMatrixThrow) {
 
   EMatrix test_matrix;
 
-  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i].SubMatrix(test_matrix), std::range_error);
+  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i].SubMatrix(test_matrix),
+               std::range_error);
 }
