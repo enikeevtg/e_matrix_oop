@@ -1,12 +1,10 @@
-// #include <limits>
-
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, BracesOk) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matrices_number_;
-  ASSERT_DOUBLE_EQ(1.0, TestsEnvironment::ut_unity_matrices_arr_[i % n](1, 1));
+  ASSERT_DOUBLE_EQ(TestsEnvironment::ut_unity_matrices_arr_[i % n](1, 1), 1.f);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, BracesThrowNillIndices) {

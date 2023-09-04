@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2023-09-04 21:46:54</td>
+            <td class="headerValue">2023-09-04 22:04:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -65,15 +65,15 @@
 <span id="L3"><span class="lineNum">       3</span>              : /// @brief Checks matrices for equality with each other</span>
 <span id="L4"><span class="lineNum">       4</span>              : /// @param other</span>
 <span id="L5"><span class="lineNum">       5</span>              : /// @return Checking result: equal - 1, not equal - 0</span>
-<span id="L6"><span class="lineNum">       6</span> <span class="tlaGNC tlaBgGNC">         760 : bool EMatrix::EqMatrix(const EMatrix&amp; other) noexcept {</span></span>
-<span id="L7"><span class="lineNum">       7</span> <span class="tlaGNC">         760 :   if (rows_ != other.rows_ || cols_ != other.cols_) return false;</span></span>
+<span id="L6"><span class="lineNum">       6</span> <span class="tlaGNC tlaBgGNC">        1160 : bool EMatrix::EqMatrix(const EMatrix&amp; other) noexcept {</span></span>
+<span id="L7"><span class="lineNum">       7</span> <span class="tlaGNC">        1160 :   if (rows_ != other.rows_ || cols_ != other.cols_) return false;</span></span>
 <span id="L8"><span class="lineNum">       8</span>              : </span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">         680 :   bool check = true;</span></span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">       11340 :   for (size_t i = 0; check == true &amp;&amp; i &lt; inline_size_; ++i) {</span></span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">       10660 :     if (std::abs(matrix_[0][i] - other.matrix_[0][i]) &gt; EPS) check = false;</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">        1080 :   bool check = true;</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">       17980 :   for (size_t i = 0; check == true &amp;&amp; i &lt; inline_size_; ++i) {</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">       16900 :     if (std::abs(matrix_[0][i] - other.matrix_[0][i]) &gt; EPS) check = false;</span></span>
 <span id="L12"><span class="lineNum">      12</span>              :   }</span>
 <span id="L13"><span class="lineNum">      13</span>              : </span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">         680 :   return check;</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">        1080 :   return check;</span></span>
 <span id="L15"><span class="lineNum">      15</span>              : }</span>
 <span id="L16"><span class="lineNum">      16</span>              : </span>
 <span id="L17"><span class="lineNum">      17</span>              : /// @brief Adds the other matrix to the current one</span>

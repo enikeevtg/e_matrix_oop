@@ -20,7 +20,7 @@ EMatrix& EMatrix::operator=(const EMatrix& other) {
 
 /// @brief Move constructor
 /// @param other
-EMatrix::EMatrix(EMatrix&& other) noexcept { swap(other); }
+EMatrix::EMatrix(EMatrix&& other) noexcept : EMatrix() { swap(other); }
 
 /// @brief Move assignment operator
 /// @param other

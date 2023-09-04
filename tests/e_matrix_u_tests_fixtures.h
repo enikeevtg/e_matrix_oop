@@ -5,7 +5,8 @@
 
 #include "e_matrix_u_tests_environment.h"
 
-class EMatrixEqMatrixSuite : public ::testing::TestWithParam<int> {};
+class EMatrixRuleOfFiveTSuite : public ::testing::TestWithParam<int> {};
+class EMatrixEqMatrixTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixSumSubTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixMulTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixTransposeTSuite : public ::testing::TestWithParam<int> {};

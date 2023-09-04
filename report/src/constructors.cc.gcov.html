@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2023-09-04 21:46:54</td>
+            <td class="headerValue">2023-09-04 22:04:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryLo">50.0&nbsp;%</td>
@@ -65,23 +65,23 @@
 <span id="L3"><span class="lineNum">       3</span>              : /// @brief Default constructor</span>
 <span id="L4"><span class="lineNum">       4</span>              : /// https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c45-dont-define-a-default-constructor-that-only-initializes-data-members-use-in-class-member-initializers-instead</span>
 <span id="L5"><span class="lineNum">       5</span>              : /// https://ru.frwiki.wiki/wiki/Matrice_vide</span>
-<span id="L6"><span class="lineNum">       6</span> <span class="tlaGNC tlaBgGNC">         606 : EMatrix::EMatrix() {}</span></span>
+<span id="L6"><span class="lineNum">       6</span> <span class="tlaGNC tlaBgGNC">         906 : EMatrix::EMatrix() {}</span></span>
 <span id="L7"><span class="lineNum">       7</span>              : </span>
 <span id="L8"><span class="lineNum">       8</span>              : /// @brief Parametrized constructor with number of rows and columns</span>
 <span id="L9"><span class="lineNum">       9</span>              : /// @param rows</span>
 <span id="L10"><span class="lineNum">      10</span>              : /// @param cols</span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">        1475 : EMatrix::EMatrix(int rows, int cols)</span></span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">        1475 :     : rows_(rows), cols_(cols), inline_size_(rows * cols) {</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">        1475 :   if (rows &lt;= 0) {</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">        1875 : EMatrix::EMatrix(int rows, int cols)</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">        1875 :     : rows_(rows), cols_(cols), inline_size_(rows * cols) {</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">        1875 :   if (rows &lt;= 0) {</span></span>
 <span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           4 :     throw std::invalid_argument(&quot;Invalid rows value: &quot; + std::to_string(rows));</span></span>
 <span id="L15"><span class="lineNum">      15</span>              :   }</span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">        1471 :   if (cols &lt;= 0) {</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">        1871 :   if (cols &lt;= 0) {</span></span>
 <span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           2 :     throw std::invalid_argument(&quot;Invalid columns value: &quot; +</span></span>
 <span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           4 :                                 std::to_string(cols));</span></span>
 <span id="L19"><span class="lineNum">      19</span>              :   }</span>
 <span id="L20"><span class="lineNum">      20</span>              : </span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">        1469 :   CreateMatrix();</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">        1469 : }</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">        1869 :   CreateMatrix();</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">        1869 : }</span></span>
         </pre>
               </td>
             </tr>
