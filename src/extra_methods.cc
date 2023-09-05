@@ -11,7 +11,7 @@ void EMatrix::SetDimensions(int rows, int cols) {
     }
   }
 
-  swap(buffer_matrix);
+  Swap(buffer_matrix);
 }
 
 void EMatrix::PrintMatrix() noexcept {

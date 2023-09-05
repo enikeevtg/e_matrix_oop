@@ -13,20 +13,20 @@ EMatrix::EMatrix(const EMatrix& other) : EMatrix(other.rows_, other.cols_) {
 EMatrix& EMatrix::operator=(const EMatrix& other) {
   if (this != &other) {
     EMatrix matrix_copy{other};
-    swap(matrix_copy);
+    Swap(matrix_copy);
   }
   return *this;
 }
 
 /// @brief Move constructor
 /// @param other
-EMatrix::EMatrix(EMatrix&& other) noexcept : EMatrix() { swap(other); }
+EMatrix::EMatrix(EMatrix&& other) noexcept : EMatrix() { Swap(other); }
 
 /// @brief Move assignment operator
 /// @param other
 /// @return
 EMatrix& EMatrix::operator=(EMatrix&& other) noexcept {
-  if (this != &other) swap(other);
+  if (this != &other) Swap(other);
   return *this;
 }
 

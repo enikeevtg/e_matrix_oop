@@ -41,6 +41,7 @@ class TestsEnvironment : public ::testing::Environment {
   static inline EMatrix* ut_matr_arr_{nullptr};
   static inline EMatrix* ut_matr_x2_arr_{nullptr};
   static inline EMatrix* ut_matr_tr_arr_{nullptr};
+  static inline double* ut_det_arr_{nullptr};
 };
 
 #endif  // E_MATRIXPLUS_TESTS_TESTS_ENV_H_

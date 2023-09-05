@@ -65,7 +65,7 @@ void EMatrix::MulMatrix(const EMatrix& other) {
         "equal to the number of rows of the second matrix");
   }
 
-  EMatrix result{rows_, other.cols_};
+  EMatrix result(rows_, other.cols_);
 
   for (int i = 0; i < result.rows_; ++i) {
     for (int j = 0; j < result.cols_; ++j) {
@@ -75,13 +75,13 @@ void EMatrix::MulMatrix(const EMatrix& other) {
     }
   }
 
-  swap(result);
+  Swap(result);
 }
 
 /// @brief Creates a new transposed matrix from the current one and returns it
 /// @return Transposed matrix
 EMatrix EMatrix::Transpose() noexcept {
-  EMatrix result{cols_, rows_};
+  EMatrix result(cols_, rows_);
 
   if (matrix_ != nullptr) {
     for (int i = 0; i < result.rows_; ++i) {
@@ -92,4 +92,40 @@ EMatrix EMatrix::Transpose() noexcept {
   }
 
   return result;
+}
+
+EMatrix EMatrix::CalcComplements() {
+  if (rows_ != cols_ || rows_ == 0 || cols_ == 0) {
+    throw std::range_error("Determinant(): the matrix is not square");
+  }
+
+  EMatrix result(rows_, cols_);
+  return result;
+}
+
+double EMatrix::Determinant() {
+  if (rows_ != cols_ || rows_ == 0 || cols_ == 0) {
+    throw std::range_error("Determinant(): the matrix is not square");
+  }
+
+  // Calculation of matrix determinant by Bareiss algorithm
+  double pivot = 1;
+  EMatrix reduced(*this);
+  reduced.PrintMatrix();
+  for (int diag = 0; diag < rows_; ++diag) {
+    EMatrix tmp(reduced);
+    for (int i = 0; i < rows_; ++i) {
+      for (int j = 0; j < cols_; ++j) {
+        if (i != diag) {
+          tmp.matrix_[i][j] =
+              pivot * (reduced.matrix_[diag][diag] * reduced.matrix_[i][j] -
+                       reduced.matrix_[diag][j] * reduced.matrix_[i][diag]);
+        }
+      }
+    }
+    reduced.Swap(tmp);
+    reduced.PrintMatrix();
+    pivot = 1.f / reduced.matrix_[diag][diag];
+  }
+  return reduced(1, 1);
 }

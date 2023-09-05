@@ -29,6 +29,6 @@ TEST_P(EMatrixEqMatrixTSuite, EqMatrixFalseCols) {
   int rows = TestsEnvironment::ut_matr_tr_arr_[i].get_rows();
   int cols = TestsEnvironment::ut_matr_tr_arr_[i].get_cols();
   EMatrix test_matrix(rows, cols + 1);
-  
+
   EXPECT_FALSE(TestsEnvironment::ut_matr_arr_[i].EqMatrix(test_matrix));
 }

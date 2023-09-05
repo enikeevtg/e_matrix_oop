@@ -12,6 +12,8 @@ class EMatrixEqMatrixTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixSumSubTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixMulTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixTransposeTSuite : public ::testing::TestWithParam<int> {};
+class EMatrixCalcComplementsTSuite : public ::testing::TestWithParam<int> {};
+class EMatrixDeterminantTSuite : public ::testing::TestWithParam<int> {};
 
 class EMatrixOperatorsOverloadsTSuite : public ::testing::TestWithParam<int> {};
 

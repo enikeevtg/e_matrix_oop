@@ -29,6 +29,16 @@ INSTANTIATE_TEST_SUITE_P(
                           TestsEnvironment::kMatrTypesNumber));
 
 INSTANTIATE_TEST_SUITE_P(
+    EMatrixUTests, EMatrixCalcComplementsTSuite,
+    testing::Range(0, TestsEnvironment::uform_matr_number_*
+                          TestsEnvironment::kMatrTypesNumber));
+
+INSTANTIATE_TEST_SUITE_P(
+    EMatrixUTests, EMatrixDeterminantTSuite,
+    testing::Range(0, TestsEnvironment::uform_matr_number_*
+                          TestsEnvironment::kMatrTypesNumber));
+
+INSTANTIATE_TEST_SUITE_P(
     EMatrixUTests, EMatrixOperatorsOverloadsTSuite,
     testing::Range(0, TestsEnvironment::uform_matr_number_*
                           TestsEnvironment::kMatrTypesNumber));

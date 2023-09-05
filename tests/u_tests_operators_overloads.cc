@@ -11,6 +11,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, BracesThrowNillIndices) {
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, BracesThrowNegIndices) {
   int i = GetParam();
+
   EXPECT_THROW(TestsEnvironment::ut_matr_arr_[i](-1, INT32_MIN),
                std::out_of_range);
 }
@@ -19,6 +20,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, BracesThrowPosIndices) {
   int i = GetParam();
   int row = TestsEnvironment::ut_matr_arr_[i].get_rows();
   int col = TestsEnvironment::ut_matr_arr_[i].get_cols();
+
   EXPECT_THROW(TestsEnvironment::ut_matr_arr_[i](row * 10, col * 100),
                std::out_of_range);
 }

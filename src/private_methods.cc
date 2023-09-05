@@ -16,7 +16,7 @@ void EMatrix::CreateMatrix() {
   }
 }
 
-void EMatrix::swap(EMatrix& other) noexcept {
+void EMatrix::Swap(EMatrix& other) noexcept {
   std::swap(matrix_, other.matrix_);
   std::swap(rows_, other.rows_);
   std::swap(cols_, other.cols_);

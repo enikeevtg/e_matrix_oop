@@ -7,27 +7,27 @@ TEST(ConstructorsTests, DefaultConstructor) {
   EXPECT_EQ(test_matrix.get_cols(), 0);
 }
 
-TEST(ConstructorsTests, ParametrizedConstructorException1) {
+TEST(ConstructorsTests, ParametrizedConstructorInvalidArg1) {
   EXPECT_THROW(EMatrix test_matrix(0, 1), std::invalid_argument);
 }
 
-TEST(ConstructorsTests, ParametrizedConstructorException2) {
+TEST(ConstructorsTests, ParametrizedConstructorInvalidArg2) {
   EXPECT_THROW(EMatrix test_matrix(1, 0), std::invalid_argument);
 }
 
-TEST(ConstructorsTests, ParametrizedConstructorException3) {
+TEST(ConstructorsTests, ParametrizedConstructorInvalidArg3) {
   EXPECT_THROW(EMatrix test_matrix(0, 0), std::invalid_argument);
 }
 
-TEST(ConstructorsTests, ParametrizedConstructorException4) {
+TEST(ConstructorsTests, ParametrizedConstructorInvalidArg4) {
   EXPECT_THROW(EMatrix test_matrix(-1, 1), std::invalid_argument);
 }
 
-TEST(ConstructorsTests, ParametrizedConstructorException5) {
+TEST(ConstructorsTests, ParametrizedConstructorInvalidArg5) {
   EXPECT_THROW(EMatrix test_matrix(1, -1), std::invalid_argument);
 }
 
-TEST(ConstructorsTests, ParametrizedConstructorException6) {
+TEST(ConstructorsTests, ParametrizedConstructorInvalidArg6) {
   EXPECT_THROW(EMatrix test_matrix(-1, -1), std::invalid_argument);
 }
 
@@ -54,7 +54,7 @@ TEST(ConstructorsTests, ParametrizedConstructorOk3) {
 
 TEST(ConstructorsTests, ParametrizedConstructorOk4) {
   EMatrix test_matrix(100, 101);
-  
+
   EXPECT_EQ(test_matrix.get_rows(), 100);
   EXPECT_EQ(test_matrix.get_cols(), 101);
 }

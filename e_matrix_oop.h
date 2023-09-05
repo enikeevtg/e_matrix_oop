@@ -27,6 +27,8 @@ class EMatrix {
   void MulNumber(const double num) noexcept;
   void MulMatrix(const EMatrix& other);
   EMatrix Transpose() noexcept;
+  EMatrix CalcComplements();
+  double Determinant();
 
   double& operator()(int row, int column) const;
 
@@ -42,7 +44,7 @@ class EMatrix {
 
   void CreateMatrix();
   void DeleteMatrix() noexcept;
-  void swap(EMatrix& other) noexcept;
+  void Swap(EMatrix& other) noexcept;
 };
 
 #endif  // E_MATRIXPLUS_E_MATRIX_OOP_H_

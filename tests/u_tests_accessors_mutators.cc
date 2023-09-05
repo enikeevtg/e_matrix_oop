@@ -82,7 +82,7 @@ TEST_P(EMatrixAccessorsMutators, SetDimensionsOk) {
   int i = GetParam();
   EMatrix test_matrix(1, 1);
   test_matrix.SetDimensions(i, i);
-  
+
   EXPECT_EQ(test_matrix.get_rows(), i);
   EXPECT_EQ(test_matrix.get_cols(), i);
 }
