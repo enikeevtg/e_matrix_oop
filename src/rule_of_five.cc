@@ -1,6 +1,6 @@
 #include "../e_matrix_oop.h"
 
-/// @brief Copy Constructor
+/// @brief Copy constructor
 /// @param other
 EMatrix::EMatrix(const EMatrix& other) : EMatrix(other.rows_, other.cols_) {
   std::copy(&other.matrix_[0][0], &other.matrix_[0][other.inline_size_],

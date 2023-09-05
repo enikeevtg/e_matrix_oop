@@ -7,6 +7,7 @@
 
 class EMatrixRuleOfFiveTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixAccessorsMutators : public ::testing::TestWithParam<int> {};
+
 class EMatrixEqMatrixTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixSumSubTSuite : public ::testing::TestWithParam<int> {};
 class EMatrixMulTSuite : public ::testing::TestWithParam<int> {};

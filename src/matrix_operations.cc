@@ -22,7 +22,6 @@ void EMatrix::SumMatrix(const EMatrix& other) {
         "SumMatrix error: matrices have different dimentions");
   }
 
-  // SumOrSubMatrix(other, MATRICES_SUMMATION);
   for (size_t i = 0; i < inline_size_; ++i) {
     matrix_[0][i] += other.matrix_[0][i];
   }

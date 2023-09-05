@@ -1,14 +1,18 @@
 #include "e_matrix_u_tests_environment.h"
 #include "e_matrix_u_tests_fixtures.h"
 
-TEST_P(EMatrixMulTSuite, MulNumberOk) {
+TEST_P(EMatrixMulTSuite, MulNumberOkHalf) {
   int i = GetParam();
-  int n = TestsEnvironment::uform_matrices_number_;
-  int i_src = i / n / 2 * 2 * n + i % n;
-  int i_res = (i / n / 2 * 2 + 1) * n + i % n;
+  EMatrix test_matrix(TestsEnvironment::ut_matr_x2_arr_[i]);
+  test_matrix.MulNumber(0.5f);
 
-  EMatrix test_matrix(TestsEnvironment::ut_matrices_arr_[i_src]);
-  test_matrix.MulNumber(2.0);
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+}
 
-  EXPECT_TRUE(TestsEnvironment::ut_matrices_arr_[i_res].EqMatrix(test_matrix));
+TEST_P(EMatrixMulTSuite, MulNumberOkTwix) {
+  int i = GetParam();
+  EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
+  test_matrix.MulNumber(2.f);
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
 }

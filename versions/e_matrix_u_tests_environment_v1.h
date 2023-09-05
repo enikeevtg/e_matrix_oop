@@ -9,19 +9,29 @@ class TestsEnvironment : public ::testing::Environment {
  public:
   enum EMatrixTypes {
     kRowPosElems = 0,
+    kRowPosElemsx2,
     kRowNegElems,
+    kRowNegElemsx2,
 
     kColumnPosElems,
+    kColumnPosElemsx2,
     kColumnNegElems,
+    kColumnNegElemsx2,
 
     kSquarePosElems,
+    kSquarePosElemsx2,
     kSquareNegElems,
-
-    kHorRectPosElems,
-    kHorRectNegElems,
+    kSquareNegElemsx2,
 
     kVertRectPosElems,
+    kVertRectPosElemsx2,
     kVertRectNegElems,
+    kVertRectNegElemsx2,
+
+    kHorRectPosElems,
+    kHorRectPosElemsx2,
+    kHorRectNegElems,
+    kHorRectNegElemsx2,
 
     kMatrTypesNumber
   };
@@ -31,15 +41,20 @@ class TestsEnvironment : public ::testing::Environment {
 
   static void TestArraysMemAlloc();
   static void SetTestMatricesDimensions();
+  static void SetRowMatricesDimensions(int& n);
+  static void SetColumnMatricesDimensions(int& n);
+  static void SetSquareMatricesDimensions(int& n);
+  static void SetRectMatricesDimensions(int& n);
   static void FillTestMatrices();
+  static void FillRowMatrices(int& n);
+  static void FillColumnMatrices(int& n);
   static void FillSquareMatrices(int& n);
   static void FillRectMatrices(int& n);
-  static void DeleteTestArray(EMatrix*& matrices_array);
+  static void TestMatricesArrayDel(EMatrix*& matrices_array);
 
   static inline int uform_matr_number_{5};
   static inline EMatrix* ut_unity_matr_arr_{nullptr};
-  static inline EMatrix* ut_matr_arr_{nullptr};
-  static inline EMatrix* ut_matr_x2_arr_{nullptr};
+  static inline EMatrix* ut_matrices_arr_{nullptr};
   static inline EMatrix* ut_matr_tr_arr_{nullptr};
 };
 

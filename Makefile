@@ -48,16 +48,17 @@ test:
 	$(CC) $(CF) $(STD) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
 	@./$(TESTS_RUNNER) > $(TESTS_REPORT)
 #	 --gtest_output=xml:output.xml
-#	@$(RM) $(TESTS_RUNNER)
+	@$(RM) $(TESTS_RUNNER)
 
 cover: gcov_report
 
 gcov_report: clean
-	@$(CC) $(CF) $(STD) $(GTESTF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
-	./$(TESTS_RUNNER)
+	$(CC) $(CF) $(STD) $(GTESTF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
+	@./$(TESTS_RUNNER) > $(TESTS_REPORT)
+	@$(RM) $(TESTS_RUNNER)
+	open $(TESTS_REPORT)
 	@lcov -t "./gcov" -o report.info --no-external -c -d . --ignore-errors mismatch
 	@genhtml -o report report.info
-	@gcovr -r . --html-details -o ./report/coverage_report.html
 	@$(REPORT_OPEN) ./report/index.html
 	@rm -rf *.gcno *.gcda gcov_test *.info
 
