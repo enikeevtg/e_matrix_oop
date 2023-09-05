@@ -31,13 +31,13 @@ TEST(ConstructorsTests, ParametrizedConstructorException6) {
 }
 
 TEST(ConstructorsTests, ParametrizedConstructorOk1) {
-  EMatrix matrix(1, 1);
+  EMatrix matrix{1, 1};
   EXPECT_EQ(1, matrix.get_rows());
   EXPECT_EQ(1, matrix.get_cols());
 }
 
 TEST(ConstructorsTests, ParametrizedConstructorOk2) {
-  EMatrix matrix(3, 2);
+  EMatrix matrix{3, 2};
   EXPECT_EQ(3, matrix.get_rows());
   EXPECT_EQ(2, matrix.get_cols());
 }

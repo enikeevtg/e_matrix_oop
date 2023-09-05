@@ -4,13 +4,14 @@
 TEST_P(EMatrixOperatorsOverloadsTSuite, BracesOk) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matrices_number_;
-  ASSERT_DOUBLE_EQ(TestsEnvironment::ut_unity_matrices_arr_[i % n](1, 1), 1.f);
+  EXPECT_DOUBLE_EQ(TestsEnvironment::ut_unity_matrices_arr_[i % n](1, 1), 1.f);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, BracesThrowNillIndices) {
   int i = GetParam();
-  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i](0, 0),
-               std::out_of_range);
+  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i](0, 0), std::out_of_range);
+  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i](0, 1), std::out_of_range);
+  EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i](1, 0), std::out_of_range);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, BracesThrowNegIndices) {

@@ -6,6 +6,10 @@ INSTANTIATE_TEST_SUITE_P(
                           TestsEnvironment::kEMatrixTypesNumber));
 
 INSTANTIATE_TEST_SUITE_P(
+    EMatrixUTests, EMatrixAccessorsMutators,
+    testing::Range(1, 1 + TestsEnvironment::uform_matrices_number_));
+
+INSTANTIATE_TEST_SUITE_P(
     EMatrixUTests, EMatrixEqMatrixTSuite,
     testing::Range(0, TestsEnvironment::uform_matrices_number_*
                           TestsEnvironment::kEMatrixTypesNumber));

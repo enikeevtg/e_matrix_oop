@@ -22,8 +22,8 @@ TEST_P(EMatrixMulTSuite, MulMatrixThrowInvalidArgSecond) {
 TEST_P(EMatrixMulTSuite, MulMatrixThrowRangeErr) {
   int i = GetParam();
 
-  EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i].get_cols() + 1,
-                      TestsEnvironment::ut_matrices_arr_[i].get_rows()};
+  EMatrix test_matrix(TestsEnvironment::ut_matrices_arr_[i].get_cols() + 1,
+                      TestsEnvironment::ut_matrices_arr_[i].get_rows());
 
   EXPECT_THROW(TestsEnvironment::ut_matrices_arr_[i].MulMatrix(test_matrix),
                std::range_error);
@@ -32,10 +32,10 @@ TEST_P(EMatrixMulTSuite, MulMatrixThrowRangeErr) {
 TEST_P(EMatrixMulTSuite, MulMatrixNillsOk) {
   int i = GetParam();
 
-  EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i].get_cols(),
-                      TestsEnvironment::ut_matrices_arr_[i].get_rows()};
-  EMatrix test_matrix_nills{test_matrix.get_rows(),
-                            TestsEnvironment::ut_matrices_arr_[i].get_cols()};
+  EMatrix test_matrix(TestsEnvironment::ut_matrices_arr_[i].get_cols(),
+                      TestsEnvironment::ut_matrices_arr_[i].get_rows());
+  EMatrix test_matrix_nills(test_matrix.get_rows(),
+                            TestsEnvironment::ut_matrices_arr_[i].get_cols());
 
   test_matrix.MulMatrix(TestsEnvironment::ut_matrices_arr_[i]);
   EXPECT_TRUE(test_matrix.EqMatrix(test_matrix_nills));
@@ -45,7 +45,7 @@ TEST_P(EMatrixMulTSuite, MulMatrixUnityOk) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matrices_number_;
 
-  EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i]};
+  EMatrix test_matrix(TestsEnvironment::ut_matrices_arr_[i]);
 
   if (test_matrix.get_cols() ==
       TestsEnvironment::ut_unity_matrices_arr_[i % n].get_rows()) {
@@ -58,7 +58,7 @@ TEST_P(EMatrixMulTSuite, MulMatrixUnityThrow) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matrices_number_;
 
-  EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i]};
+  EMatrix test_matrix(TestsEnvironment::ut_matrices_arr_[i]);
 
   if (test_matrix.get_cols() !=
       TestsEnvironment::ut_unity_matrices_arr_[i % n].get_rows()) {

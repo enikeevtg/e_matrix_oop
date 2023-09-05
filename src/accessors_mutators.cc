@@ -10,6 +10,20 @@ int EMatrix::get_rows() const noexcept { return rows_; }
 /// @return matrix columns number
 int EMatrix::get_cols() const noexcept { return cols_; }
 
-void EMatrix::set_rows(int rows) { SetDimensions(rows, cols_); }
+void EMatrix::set_rows(int rows) {
+  if (rows < 1) {
+    throw std::invalid_argument(
+        "set_rows error: rows value must be greater than nill");
+  }
 
-void EMatrix::set_cols(int cols) { SetDimensions(rows_, cols); }
+  SetDimensions(rows, cols_);
+}
+
+void EMatrix::set_cols(int cols) {
+  if (cols < 1) {
+    throw std::invalid_argument(
+        "set_cols error: col value must be greater than nill");
+  }
+
+  SetDimensions(rows_, cols);
+}

@@ -7,7 +7,7 @@ TEST_P(EMatrixSumSubTSuite, SumMatrixOk) {
   int i_src = i / n / 2 * 2 * n + i % n;
   int i_res = (i / n / 2 * 2 + 1) * n + i % n;
 
-  EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i_src]};
+  EMatrix test_matrix(TestsEnvironment::ut_matrices_arr_[i_src]);
   test_matrix.SumMatrix(TestsEnvironment::ut_matrices_arr_[i_src]);
 
   EXPECT_TRUE(TestsEnvironment::ut_matrices_arr_[i_res].EqMatrix(test_matrix));
@@ -28,7 +28,7 @@ TEST_P(EMatrixSumSubTSuite, SubMatrixOk) {
   int i_src = (i / n / 2 * 2 + 1) * n + i % n;
   int i_res = i / n / 2 * 2 * n + i % n;
 
-  EMatrix test_matrix{TestsEnvironment::ut_matrices_arr_[i_src]};
+  EMatrix test_matrix(TestsEnvironment::ut_matrices_arr_[i_src]);
   test_matrix.SubMatrix(TestsEnvironment::ut_matrices_arr_[i_res]);
 
   EXPECT_TRUE(TestsEnvironment::ut_matrices_arr_[i_res].EqMatrix(test_matrix));

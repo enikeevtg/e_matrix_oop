@@ -46,13 +46,11 @@ e_matrix_oop.a: clean
 
 test:
 	$(CC) $(CF) $(STD) $(GTESTF) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
-	@./$(TESTS_RUNNER)
-#	 > $(TESTS_REPORT)
+	@./$(TESTS_RUNNER) > $(TESTS_REPORT)
 #	 --gtest_output=xml:output.xml
-#	 > $(TESTS_REPORT)
 #	@$(RM) $(TESTS_RUNNER)
 
-gcov: gcov_report
+cover: gcov_report
 
 gcov_report: clean
 	@$(CC) $(CF) $(STD) $(GTESTF) $(GCOV_FLAGS) $(ASAN) $(TESTS_SRC) $(SRC) -o $(TESTS_RUNNER)
