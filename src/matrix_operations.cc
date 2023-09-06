@@ -103,48 +103,14 @@ EMatrix EMatrix::CalcComplements() {
   return result;
 }
 
-void EMatrix::BareissReducingAlgorithm() {
-  double pivot = 1.f;
-  PrintMatrix();
-  for (int diag = 0; diag < rows_; ++diag) {
-    if (matrix_[diag][diag] == 0.f) {
-      int i = diag;
-      while (matrix_[i][diag] == 0 && i < rows_) ++i;
-      if (matrix_[i][diag] != 0) {
-        for (int j = 0; j < cols_; ++j) {
-          std::swap(matrix_[diag][j], matrix_[i][j]);
-          matrix_[i][j] *= -1.f;
-        }
-      }
-      PrintMatrix();
-    }
-    EMatrix tmp(*this);
-    for (int i = 0; i < rows_; ++i) {
-      for (int j = 0; j < cols_; ++j) {
-        if (i != diag) {
-          tmp.matrix_[i][j] =
-              pivot * (matrix_[diag][diag] * matrix_[i][j] -
-                       matrix_[diag][j] * matrix_[i][diag]);
-        }
-      }
-    }
-    Swap(tmp);
-    PrintMatrix();
-    pivot = 1.f / matrix_[diag][diag];
-  }
-  for (size_t i = 0; i < inline_size_; ++i) {
-    if (matrix_[0][i] == -0.f) matrix_[0][i] = 0.f;
-  }
-  PrintMatrix();
-}
-
 double EMatrix::Determinant() {
   if (rows_ != cols_ || rows_ == 0 || cols_ == 0) {
     throw std::range_error("Determinant(): the matrix is not square");
   }
 
   // Calculation of matrix determinant by Bareiss algorithm
+  double det = 0.f;
   EMatrix reduced(*this);
-  reduced.BareissReducingAlgorithm();
-  return reduced(1, 1);
+  if (reduced.BareissReducingAlgorithm() == true) det = reduced(1, 1);
+  return det;
 }

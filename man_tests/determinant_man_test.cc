@@ -12,7 +12,6 @@ int main() {
     }
   }
   test_matrix(1, 1) = 0.f;
-  std::cout << "14" << std::endl;
-  test_matrix.Determinant();
+  std::cout << test_matrix.Determinant() << std::endl;
   return 0;
 }
