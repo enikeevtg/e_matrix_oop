@@ -45,6 +45,7 @@ class EMatrix {
   void CreateMatrix();
   void DeleteMatrix() noexcept;
   void Swap(EMatrix& other) noexcept;
+  void BareissReducingAlgorithm();
 };
 
 #endif  // E_MATRIXPLUS_E_MATRIX_OOP_H_

@@ -11,6 +11,7 @@ int main() {
       test_matrix(i, j) = rand() % 10;
     }
   }
+  test_matrix(1, 1) = 0.f;
   std::cout << "14" << std::endl;
   test_matrix.Determinant();
   return 0;
