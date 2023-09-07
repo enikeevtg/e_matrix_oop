@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 
-#define EPS 1e-8
+#define EPS 1e-7
 
 class EMatrix {
  public:
@@ -29,6 +29,7 @@ class EMatrix {
   EMatrix Transpose() noexcept;
   EMatrix CalcComplements();
   double Determinant();
+  EMatrix InverseMatrix();
 
   double& operator()(int row, int column) const;
 

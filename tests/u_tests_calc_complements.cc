@@ -35,7 +35,6 @@ TEST(EMatrixCalcComplementsTSuiteManual, CalcComplementsOk1x1) {
 TEST(EMatrixCalcComplementsTSuiteManual, CalcComplementsOk2x2) {
   int sz = 2;
   EMatrix test_matrix(sz, sz);
-
   int elem_value = 1;
   for (int i = 1; i <= sz; ++i) {
     for (int j = 1; j <= sz; ++j) {
@@ -58,7 +57,6 @@ TEST(EMatrixCalcComplementsTSuiteManual, CalcComplementsOk2x2) {
 TEST(EMatrixCalcComplementsTSuiteManual, CalcComplementsOk3x3) {
   int sz = 3;
   EMatrix test_matrix(sz, sz);
-
   int elem_value = 1;
   for (int i = 1; i <= sz; ++i) {
     for (int j = 1; j <= sz; ++j) {
@@ -86,7 +84,6 @@ TEST(EMatrixCalcComplementsTSuiteManual, CalcComplementsOk3x3) {
 TEST(EMatrixCalcComplementsTSuiteManual, CalcComplementsOk4x4) {
   int sz = 4;
   EMatrix test_matrix(sz, sz);
-
   int elem_value = 1;
   for (int i = 1; i <= sz; ++i) {
     for (int j = 1; j <= sz; ++j) {

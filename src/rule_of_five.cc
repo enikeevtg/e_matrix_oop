@@ -32,6 +32,5 @@ EMatrix& EMatrix::operator=(EMatrix&& other) noexcept {
 
 /// @brief Destructor
 EMatrix::~EMatrix() {
-  // std::cout << "Destruction matrix: " << this << std::endl;
   DeleteMatrix();
 }

@@ -13,7 +13,7 @@ int EMatrix::get_cols() const noexcept { return cols_; }
 void EMatrix::set_rows(int rows) {
   if (rows < 1) {
     throw std::invalid_argument(
-        "set_rows error: rows value must be greater than nill");
+        "set_rows(): rows value must be greater than nill");
   }
 
   SetDimensions(rows, cols_);
@@ -22,7 +22,7 @@ void EMatrix::set_rows(int rows) {
 void EMatrix::set_cols(int cols) {
   if (cols < 1) {
     throw std::invalid_argument(
-        "set_cols error: col value must be greater than nill");
+        "set_cols(): cols value must be greater than nill");
   }
 
   SetDimensions(rows_, cols);

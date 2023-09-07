@@ -19,7 +19,7 @@ bool EMatrix::EqMatrix(const EMatrix& other) noexcept {
 void EMatrix::SumMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_) {
     throw std::range_error(
-        "SumMatrix error: matrices have different dimentions");
+        "SumMatrix(): matrices have different dimentions");
   }
 
   for (size_t i = 0; i < inline_size_; ++i) {
@@ -32,7 +32,7 @@ void EMatrix::SumMatrix(const EMatrix& other) {
 void EMatrix::SubMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_) {
     throw std::range_error(
-        "SubMatrix error: matrices have different dimentions");
+        "SubMatrix(): matrices have different dimentions");
   }
 
   for (size_t i = 0; i < inline_size_; ++i) {
@@ -54,14 +54,14 @@ void EMatrix::MulNumber(const double num) noexcept {
 /// @param other
 void EMatrix::MulMatrix(const EMatrix& other) {
   if (matrix_ == nullptr) {
-    throw std::invalid_argument("MulMatrix error: first matrix is empty");
+    throw std::invalid_argument("MulMatrix(): first matrix is empty");
   }
   if (other.matrix_ == nullptr) {
-    throw std::invalid_argument("MulMatrix error: second matrix is empty");
+    throw std::invalid_argument("MulMatrix(): second matrix is empty");
   }
   if (cols_ != other.rows_) {
     throw std::range_error(
-        "MulMatrix error: the number of columns of the first matrix is not "
+        "MulMatrix(): the number of columns of the first matrix is not "
         "equal to the number of rows of the second matrix");
   }
 
@@ -124,5 +124,24 @@ double EMatrix::Determinant() {
   double det = 0.f;
   EMatrix reduced(*this);
   if (reduced.BareissReducingAlgorithm() == true) det = reduced(1, 1);
+
   return det;
+}
+
+EMatrix EMatrix::InverseMatrix() {
+  double det = Determinant();
+  if (std::abs(det) < EPS){ 
+    throw std::invalid_argument("InverseMatrix(): matrix determinant is nill");
+  }
+
+  EMatrix result(rows_, cols_);
+  if (rows_ == 1) {
+    result(1, 1) = 1 / det;
+  } else {
+    EMatrix complements_matrix = CalcComplements();
+    result = complements_matrix.Transpose();
+    result.MulNumber(1 / det);
+  }
+
+  return result;
 }
