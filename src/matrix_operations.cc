@@ -66,7 +66,6 @@ void EMatrix::MulMatrix(const EMatrix& other) {
   }
 
   EMatrix result(rows_, other.cols_);
-
   for (int i = 0; i < result.rows_; ++i) {
     for (int j = 0; j < result.cols_; ++j) {
       for (int k = 0; k < cols_; ++k) {
@@ -82,7 +81,6 @@ void EMatrix::MulMatrix(const EMatrix& other) {
 /// @return Transposed matrix
 EMatrix EMatrix::Transpose() noexcept {
   EMatrix result(cols_, rows_);
-
   if (matrix_ != nullptr) {
     for (int i = 0; i < result.rows_; ++i) {
       for (int j = 0; j < result.cols_; ++j) {
@@ -94,21 +92,35 @@ EMatrix EMatrix::Transpose() noexcept {
   return result;
 }
 
+/// @brief Calculates the algebraic addition matrix of the current one and
+/// returns it
+/// @return Algebraic addition matrix
 EMatrix EMatrix::CalcComplements() {
   if (rows_ != cols_ || rows_ == 0 || cols_ == 0) {
-    throw std::range_error("Determinant(): the matrix is not square");
+    throw std::range_error("CalComplements(): the matrix is not square");
   }
 
-  EMatrix result(rows_, cols_);
+  EMatrix result(*this);
+  if (result.rows_ > 1) {
+    for (int i = 0; i < rows_; ++i) {
+      for (int j = 0; j < cols_; ++j) {
+        EMatrix minor_ij = this->CreateMinor(i, j);
+        result.matrix_[i][j] = minor_ij.Determinant();
+        if ((i + j) % 2 == 1) result.matrix_[i][j] *= -1;
+      }
+    }
+  }
+
   return result;
 }
 
+/// @brief Calculates and returns the determinant of the current matrix
+/// @return Matrix determinant
 double EMatrix::Determinant() {
   if (rows_ != cols_ || rows_ == 0 || cols_ == 0) {
     throw std::range_error("Determinant(): the matrix is not square");
   }
 
-  // Calculation of matrix determinant by Bareiss algorithm
   double det = 0.f;
   EMatrix reduced(*this);
   if (reduced.BareissReducingAlgorithm() == true) det = reduced(1, 1);
