@@ -53,14 +53,14 @@ bool EMatrix::ExchangeCurrentRow(int row_col) {
   bool process_state = true;
   int i = row_col;
 
-  while (matrix_[i][row_col] == 0 && i < rows_) ++i;  // search for replacement
-  if (matrix_[i][row_col] != 0) {
+  while (i < rows_ && matrix_[i][row_col] == 0) ++i;  // search for replacement
+  if (i == rows_) {  // if all down column elements is nills
+    process_state = false;
+  } else {
     for (int j = 0; j < cols_; ++j) {
       std::swap(matrix_[row_col][j], matrix_[i][j]);
       matrix_[i][j] *= -1.f;
     }
-  } else {
-    process_state = false;
   }
   
   return process_state;

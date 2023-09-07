@@ -3,7 +3,7 @@
 void TestsEnvironment::SetUp() {
   TestArraysMemAlloc();
   SetTestMatricesDimensions();
-  FillTestMatrices();
+  FillTestArrays();
   // for (int i = 0; i < uform_matr_number_ /* * kMatrTypesNumber*/; ++i)
   // {
   //   std::cout << i << std::endl;
@@ -20,6 +20,7 @@ void TestsEnvironment::TestArraysMemAlloc() {
   ut_matr_arr_ = new EMatrix[kMatrTypesNumber * uform_matr_number_];
   ut_matr_x2_arr_ = new EMatrix[kMatrTypesNumber * uform_matr_number_];
   ut_matr_tr_arr_ = new EMatrix[kMatrTypesNumber * uform_matr_number_];
+  ut_det_arr_ = new double[kMatrTypesNumber * uform_matr_number_]();
 }
 
 void TestsEnvironment::SetTestMatricesDimensions() {
@@ -60,7 +61,7 @@ void TestsEnvironment::SetTestMatricesDimensions() {
   }
 }
 
-void TestsEnvironment::FillTestMatrices() {
+void TestsEnvironment::FillTestArrays() {
   int n = uform_matr_number_;
   for (int k = 0; k < n; ++k) {
     for (int i = 1; i <= k + 2; ++i) {
@@ -108,6 +109,8 @@ void TestsEnvironment::FillTestMatrices() {
       }
     }
   }
+  ut_det_arr_[kSquarePosElems * n] = -10;
+  ut_det_arr_[kSquareNegElems * n] = -10;
 }
 
 void TestsEnvironment::TearDown() {
@@ -115,6 +118,10 @@ void TestsEnvironment::TearDown() {
   DeleteTestArray(ut_matr_arr_);
   DeleteTestArray(ut_matr_x2_arr_);
   DeleteTestArray(ut_matr_tr_arr_);
+  if (ut_det_arr_) {
+    delete[] ut_det_arr_;
+    ut_det_arr_ = nullptr;
+  }
 }
 
 void TestsEnvironment::DeleteTestArray(EMatrix*& matrices_array) {

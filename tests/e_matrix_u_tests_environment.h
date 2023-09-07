@@ -31,9 +31,7 @@ class TestsEnvironment : public ::testing::Environment {
 
   static void TestArraysMemAlloc();
   static void SetTestMatricesDimensions();
-  static void FillTestMatrices();
-  static void FillSquareMatrices(int& n);
-  static void FillRectMatrices(int& n);
+  static void FillTestArrays();
   static void DeleteTestArray(EMatrix*& matrices_array);
 
   static inline int uform_matr_number_{5};
