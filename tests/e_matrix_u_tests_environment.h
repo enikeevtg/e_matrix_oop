@@ -47,4 +47,3 @@ class TestsEnvironment : public ::testing::Environment {
 }  // namespace e_matrix
 
 #endif  // E_MATRIXPLUS_TESTS_TESTS_ENV_H_
-

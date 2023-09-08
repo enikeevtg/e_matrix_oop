@@ -1,5 +1,5 @@
-#include "e_matrix_u_tests_fixtures.h"
 #include "e_matrix_u_tests_environment.h"
+#include "e_matrix_u_tests_fixtures.h"
 
 namespace e_matrix {
 
@@ -17,7 +17,7 @@ TEST_P(EMatrixInverseMatrixTSuite, InverseMatrixThrowNillDet) {
     for (int j = 1; j <= sz; ++j) {
       test_matrix(i, j) = 10.f * i + j;
     }
-  }
+  }  // {{11 12 13...} {21 22 23...} {31 32 33...}...}
 
   EXPECT_THROW(test_matrix.InverseMatrix(), std::invalid_argument);
 }
@@ -42,13 +42,15 @@ TEST(EMatrixInverseMatrixTSuiteManual, InverseMatrixOk2x2) {
     for (int j = 1; j <= sz; ++j) {
       test_matrix(i, j) = 10.f * i + j;
     }
-  }
+  }  // {{11 12} {21 22}}
 
   EMatrix test_ref_matrix(sz, sz);
-  test_ref_matrix(1, 1) = -2.2f;
-  test_ref_matrix(1, 2) = 1.2f;
-  test_ref_matrix(2, 1) = 2.1f;
-  test_ref_matrix(2, 2) = -1.1f;
+  double ref_tmp[4] = {-2.2f, 1.2f, 2.1f, -1.1f};
+  for (int i = 1; i <= sz; ++i) {
+    for (int j = 1; j <= sz; ++j) {
+      test_ref_matrix(i, j) = ref_tmp[(i - 1) * sz + (j - 1)];
+    }
+  }
 
   EMatrix test_res_matrix = test_matrix.InverseMatrix();
 

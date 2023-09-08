@@ -20,8 +20,7 @@ bool EMatrix::EqMatrix(const EMatrix& other) noexcept {
 /// @param other
 void EMatrix::SumMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_) {
-    throw std::range_error(
-        "SumMatrix(): matrices have different dimentions");
+    throw std::range_error("SumMatrix(): matrices have different dimentions");
   }
 
   for (size_t i = 0; i < inline_size_; ++i) {
@@ -33,8 +32,7 @@ void EMatrix::SumMatrix(const EMatrix& other) {
 /// @param other
 void EMatrix::SubMatrix(const EMatrix& other) {
   if (rows_ != other.rows_ || cols_ != other.cols_) {
-    throw std::range_error(
-        "SubMatrix(): matrices have different dimentions");
+    throw std::range_error("SubMatrix(): matrices have different dimentions");
   }
 
   for (size_t i = 0; i < inline_size_; ++i) {
@@ -132,13 +130,13 @@ double EMatrix::Determinant() {
 
 EMatrix EMatrix::InverseMatrix() {
   double det = Determinant();
-  if (std::abs(det) < EPS){ 
+  if (std::abs(det) < EPS) {
     throw std::invalid_argument("InverseMatrix(): matrix determinant is nill");
   }
 
   EMatrix result(rows_, cols_);
   if (rows_ == 1) {
-    result(1, 1) = 1 / det;
+    result(1, 1) = 1.f / det;
   } else {
     EMatrix complements_matrix = CalcComplements();
     result = complements_matrix.Transpose();

@@ -2,6 +2,7 @@
 
 #include "../e_matrix_oop.h"
 using namespace std;
+using namespace e_matrix;
 
 void SumMatrixTest() {
   cout << "void SumMatrixTest()" << endl;

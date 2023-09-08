@@ -30,7 +30,7 @@ void EMatrix::DeleteMatrix() noexcept {
 }
 
 /// @brief Matrices swapping
-/// @param other 
+/// @param other
 void EMatrix::Swap(EMatrix& other) noexcept {
   std::swap(matrix_, other.matrix_);
   std::swap(rows_, other.rows_);
@@ -39,8 +39,8 @@ void EMatrix::Swap(EMatrix& other) noexcept {
 }
 
 /// @brief Matrix minor creation method
-/// @param cur_row 
-/// @param cur_col 
+/// @param cur_row
+/// @param cur_col
 /// @return Minor matrix
 EMatrix EMatrix::CreateMinor(int cur_row, int cur_col) {
   EMatrix minor(rows_ - 1, cols_ - 1);
@@ -76,8 +76,9 @@ bool EMatrix::BareissReducingAlgorithm() {
   return process_state;
 }
 
-/// @brief Search for replacement row and swap "row_col" row with it for Bareiss reducing algorithm
-/// @param row_col 
+/// @brief Search for replacement row and swap "row_col" row with it for Bareiss
+/// reducing algorithm
+/// @param row_col
 /// @return Excanging success/error status
 bool EMatrix::ExchangeCurrentRow(int row_col) {
   bool process_state = true;
@@ -97,8 +98,8 @@ bool EMatrix::ExchangeCurrentRow(int row_col) {
 }
 
 /// @brief Bareiss reducing algorithm calculation iteration
-/// @param row_col 
-/// @param pivot 
+/// @param row_col
+/// @param pivot
 void EMatrix::ReducingIterationStep(int row_col, double pivot) {
   EMatrix tmp(*this);
   for (int i = 0; i < rows_; ++i) {

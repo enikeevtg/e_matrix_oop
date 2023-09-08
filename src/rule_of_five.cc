@@ -33,8 +33,6 @@ EMatrix& EMatrix::operator=(EMatrix&& other) noexcept {
 }
 
 /// @brief Destructor
-EMatrix::~EMatrix() {
-  DeleteMatrix();
-}
+EMatrix::~EMatrix() { DeleteMatrix(); }
 
 }  // namespace e_matrix

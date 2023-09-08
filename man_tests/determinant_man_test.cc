@@ -2,9 +2,10 @@
 
 #include "../e_matrix_oop.h"
 using namespace std;
+using namespace e_matrix;
 
 int main() {
-  int sz = 1;
+  int sz = 2;
   EMatrix test_matrix(sz, sz);
   for (int i = 1; i <= sz; ++i) {
     for (int j = 1; j <= sz; ++j) {

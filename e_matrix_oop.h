@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 namespace e_matrix {
-  
+
 #define EPS 1e-7
 
 class EMatrix {
@@ -33,6 +33,8 @@ class EMatrix {
   double Determinant();
   EMatrix InverseMatrix();
 
+  EMatrix operator+(const EMatrix& other);
+  EMatrix operator-(const EMatrix& other);
   double& operator()(int row, int column) const;
 
   void SetDimensions(int rows, int cols);

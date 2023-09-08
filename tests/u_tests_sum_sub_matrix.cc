@@ -3,7 +3,11 @@
 
 namespace e_matrix {
 
-TEST_P(EMatrixSumSubTSuite, SumMatrixThrow0) {
+//=============================================================================
+// void SumMatrix(const EMatrix& other);
+//=============================================================================
+
+TEST_P(EMatrixSumSubTSuite, SumMatrixThrowRangeErr1) {
   int i = GetParam();
   EMatrix test_matrix;
 
@@ -11,7 +15,7 @@ TEST_P(EMatrixSumSubTSuite, SumMatrixThrow0) {
                std::range_error);
 }
 
-TEST_P(EMatrixSumSubTSuite, SumMatrixThrow1) {
+TEST_P(EMatrixSumSubTSuite, SumMatrixThrowRangeErr2) {
   int i = GetParam();
   int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
   int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
@@ -21,7 +25,7 @@ TEST_P(EMatrixSumSubTSuite, SumMatrixThrow1) {
                std::range_error);
 }
 
-TEST_P(EMatrixSumSubTSuite, SumMatrixThrow2) {
+TEST_P(EMatrixSumSubTSuite, SumMatrixThrowRangeErr3) {
   int i = GetParam();
   int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
   int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
@@ -49,9 +53,12 @@ TEST_P(EMatrixSumSubTSuite, SumMatrixOk1) {
   EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
 }
 
-//-----------------------------------------------------------------------------
 
-TEST_P(EMatrixSumSubTSuite, SubMatrixThrow0) {
+//=============================================================================
+// void SubMatrix(const EMatrix& other);
+//=============================================================================
+
+TEST_P(EMatrixSumSubTSuite, SubMatrixThrowRangeErr1) {
   int i = GetParam();
   EMatrix test_matrix;
 
@@ -59,7 +66,7 @@ TEST_P(EMatrixSumSubTSuite, SubMatrixThrow0) {
                std::range_error);
 }
 
-TEST_P(EMatrixSumSubTSuite, SubMatrixThrow1) {
+TEST_P(EMatrixSumSubTSuite, SubMatrixThrowRangeErr2) {
   int i = GetParam();
   int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
   int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
@@ -69,7 +76,7 @@ TEST_P(EMatrixSumSubTSuite, SubMatrixThrow1) {
                std::range_error);
 }
 
-TEST_P(EMatrixSumSubTSuite, SubMatrixThrow2) {
+TEST_P(EMatrixSumSubTSuite, SubMatrixThrowRangeErr3) {
   int i = GetParam();
   int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
   int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();

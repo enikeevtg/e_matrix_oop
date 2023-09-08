@@ -3,6 +3,7 @@
 
 #include "../e_matrix_oop.h"
 using namespace std;
+using namespace e_matrix;
 
 void test_matrix() {
   cout << "test_matrix:" << endl;

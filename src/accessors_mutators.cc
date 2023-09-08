@@ -2,7 +2,7 @@
 
 namespace e_matrix {
 
-double** EMatrix::get_matrix() { return matrix_; }  // temp method
+// double** EMatrix::get_matrix() { return matrix_; }  // temp method
 
 /// @brief rows_ accessor
 /// @return matrix rows number
