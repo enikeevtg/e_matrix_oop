@@ -50,7 +50,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusOk0) {
   EMatrix test_matrix(rows, cols);
   EMatrix test_res_matrix = test_matrix + TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_res_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusOk1) {
@@ -58,7 +58,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusOk1) {
   EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
   EMatrix test_res_matrix = test_matrix + TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+  EXPECT_TRUE(test_res_matrix == TestsEnvironment::ut_matr_x2_arr_[i]);
 }
 
 //=============================================================================
@@ -108,7 +108,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusOk0) {
   EMatrix test_matrix(rows, cols);
   EMatrix test_res_matrix = TestsEnvironment::ut_matr_arr_[i] - test_matrix;
 
-  EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_res_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusOk1) {
@@ -116,7 +116,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusOk1) {
   EMatrix test_matrix(TestsEnvironment::ut_matr_x2_arr_[i]);
   EMatrix test_res_matrix = test_matrix - TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_res_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 //=============================================================================
@@ -127,14 +127,14 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberOkHalf) {
   int i = GetParam();
   EMatrix test_matrix = TestsEnvironment::ut_matr_x2_arr_[i] * 0.5f;
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberOkTwix) {
   int i = GetParam();
   EMatrix test_matrix = TestsEnvironment::ut_matr_arr_[i] * 2.f;
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_x2_arr_[i]);
 }
 
 //=============================================================================
@@ -146,7 +146,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberFriendOkHalf) {
   double num = 0.5f;
   EMatrix test_matrix = num * TestsEnvironment::ut_matr_x2_arr_[i];
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberFriendOkTwix) {
@@ -154,7 +154,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberFriendOkTwix) {
   double num = 2.f;
   EMatrix test_matrix = num * TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_x2_arr_[i]);
 }
 
 //=============================================================================
@@ -196,7 +196,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixNillsOk) {
   EMatrix test_matrix_nills(rows, rows);  // res dimension is (rows_1, cols_2)
   EMatrix test_res_matrix = test_matrix * TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_res_matrix.EqMatrix(test_matrix_nills));
+  EXPECT_TRUE(test_res_matrix == test_matrix_nills);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixUnityThrowRangeErr) {
@@ -220,7 +220,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixUnityOk) {
       TestsEnvironment::ut_unity_matr_arr_[i % n].get_rows()) {
     EMatrix test_res_matrix =
         test_matrix * TestsEnvironment::ut_unity_matr_arr_[i % n];
-    EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+    EXPECT_TRUE(test_res_matrix == TestsEnvironment::ut_matr_arr_[i]);
   }
 }
 
@@ -307,7 +307,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignOk0) {
   EMatrix test_matrix(rows, cols);
   test_matrix += TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignOk1) {
@@ -315,7 +315,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignOk1) {
   EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
   test_matrix += TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_x2_arr_[i]);
 }
 
 //=============================================================================
@@ -366,7 +366,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignOk0) {
   EMatrix test_res_matrix = TestsEnvironment::ut_matr_arr_[i];
   test_res_matrix -= test_matrix;
 
-  EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_res_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignOk1) {
@@ -374,7 +374,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignOk1) {
   EMatrix test_matrix(TestsEnvironment::ut_matr_x2_arr_[i]);
   test_matrix -= TestsEnvironment::ut_matr_arr_[i];
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 //=============================================================================
@@ -386,7 +386,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulAssignNumberOkHalf) {
   EMatrix test_matrix(TestsEnvironment::ut_matr_x2_arr_[i]);
   test_matrix *= 0.5f;
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_arr_[i]);
 }
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulAssignNumberOkTwix) {
@@ -394,7 +394,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulAssignNumberOkTwix) {
   EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
   test_matrix *= 2.f;
 
-  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+  EXPECT_TRUE(test_matrix == TestsEnvironment::ut_matr_x2_arr_[i]);
 }
 
 //=============================================================================
