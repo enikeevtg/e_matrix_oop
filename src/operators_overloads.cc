@@ -26,21 +26,19 @@ EMatrix EMatrix::operator*(const double& num) {
   return matrix;
 }
 
-EMatrix operator*(const double& num, EMatrix& matrix) {
-  return matrix * num;
-}
+EMatrix operator*(const double& num, EMatrix& matrix) { return matrix * num; }
 
 bool EMatrix::operator==(const EMatrix& other) noexcept {
   return EqMatrix(other);
-} 
-
-void EMatrix::operator+=(const EMatrix& other) {
-  return SumMatrix(other);
 }
 
-void EMatrix::operator-=(const EMatrix& other) {
-  return SubMatrix(other);
-}
+void EMatrix::operator+=(const EMatrix& other) { return SumMatrix(other); }
+
+void EMatrix::operator-=(const EMatrix& other) { return SubMatrix(other); }
+
+void EMatrix::operator*=(const double& num) noexcept { MulNumber(num); }
+
+void EMatrix::operator*=(const EMatrix& other) { MulMatrix(other); }
 
 double& EMatrix::operator()(int row, int column) const {
   if (row < 1 || column < 1 || row > rows_ || column > cols_) {
