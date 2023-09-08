@@ -35,6 +35,7 @@ class EMatrix {
 
   EMatrix operator+(const EMatrix& other);
   EMatrix operator-(const EMatrix& other);
+  EMatrix operator*(const EMatrix& other);
   double& operator()(int row, int column) const;
 
   void SetDimensions(int rows, int cols);

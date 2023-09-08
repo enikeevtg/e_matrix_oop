@@ -53,7 +53,6 @@ TEST_P(EMatrixSumSubTSuite, SumMatrixOk1) {
   EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
 }
 
-
 //=============================================================================
 // void SubMatrix(const EMatrix& other);
 //=============================================================================
