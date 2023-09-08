@@ -20,6 +20,10 @@ EMatrix EMatrix::operator*(const EMatrix& other) {
   return matrix;
 }
 
+bool EMatrix::operator==(const EMatrix& other) {
+  return EqMatrix(other);
+} 
+
 double& EMatrix::operator()(int row, int column) const {
   if (row < 1 || column < 1 || row > rows_ || column > cols_) {
     throw std::out_of_range("Matrix(i, j): index is outside the matrix");

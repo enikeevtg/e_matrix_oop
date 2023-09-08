@@ -185,6 +185,44 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrUnityOk) {
   }
 }
 
+
+//=============================================================================
+// operator()(int row, int col) const;
+//=============================================================================
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorEqMatrixTrue) {
+  int i = GetParam();
+  EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
+
+  EXPECT_TRUE(TestsEnvironment::ut_matr_arr_[i] == test_matrix);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorEqMatrixFalse) {
+  int i = GetParam();
+  EMatrix test_matrix(TestsEnvironment::ut_matr_tr_arr_[i]);
+
+  EXPECT_FALSE(TestsEnvironment::ut_matr_arr_[i] == test_matrix);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorEqMatrixFalseRows) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_tr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_tr_arr_[i].get_cols();
+  EMatrix test_matrix(rows + 1, cols);
+
+  EXPECT_FALSE(TestsEnvironment::ut_matr_arr_[i] == test_matrix);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorEqMatrixFalseCols) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_tr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_tr_arr_[i].get_cols();
+  EMatrix test_matrix(rows, cols + 1);
+
+  EXPECT_FALSE(TestsEnvironment::ut_matr_arr_[i] == test_matrix);
+}
+
+
 //=============================================================================
 // operator()(int row, int col) const;
 //=============================================================================

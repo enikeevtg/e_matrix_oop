@@ -36,11 +36,12 @@ class EMatrix {
   EMatrix operator+(const EMatrix& other);
   EMatrix operator-(const EMatrix& other);
   EMatrix operator*(const EMatrix& other);
+  bool operator==(const EMatrix& other);
   double& operator()(int row, int column) const;
 
   void SetDimensions(int rows, int cols);
   void PrintMatrix() noexcept;
-  double** get_matrix();  // TMP METHOD
+  // double** get_matrix();  // TMP METHOD
 
  private:
   double** matrix_{nullptr};
