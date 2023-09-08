@@ -36,7 +36,11 @@ class EMatrix {
   EMatrix operator+(const EMatrix& other);
   EMatrix operator-(const EMatrix& other);
   EMatrix operator*(const EMatrix& other);
-  bool operator==(const EMatrix& other);
+  EMatrix operator*(const double& num);
+  friend EMatrix operator*(const double& num, EMatrix& matrix);
+  bool operator==(const EMatrix& other) noexcept;
+  void operator+=(const EMatrix& other);
+  void operator-=(const EMatrix& other);
   double& operator()(int row, int column) const;
 
   void SetDimensions(int rows, int cols);

@@ -77,7 +77,7 @@ gcov_report: clean testobjects
 	./$(TESTS_RUNNER) > $(TESTS_REPORT)
 	@$(RM) $(TESTS_RUNNER)
 	open $(TESTS_REPORT)
-	@lcov -t "./gcov" -o report.info --no-external -c -d . --ignore-errors mismatch
+	@lcov -t "gcov_report" --ignore-errors mismatch -o report.info --no-external -c -d .
 	@genhtml -o report report.info
 	@$(OPEN_HTML) ./report/index.html
 	@$(RM) *.gcno *.gcda *.info

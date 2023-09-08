@@ -119,11 +119,51 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusOk1) {
   EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
 }
 
+
+//=============================================================================
+// EMatrix operator*(const double& num);
+//=============================================================================
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberOkHalf) {
+  int i = GetParam();
+  EMatrix test_matrix = TestsEnvironment::ut_matr_x2_arr_[i] * 0.5f;
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberOkTwix) {
+  int i = GetParam();
+  EMatrix test_matrix = TestsEnvironment::ut_matr_arr_[i] * 2.f;
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+}
+
+//=============================================================================
+// EMatrix operator*(const double& num, EMatrix& matrix);
+//=============================================================================
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberFriendOkHalf) {
+  int i = GetParam();
+  double num = 0.5f;
+  EMatrix test_matrix = num * TestsEnvironment::ut_matr_x2_arr_[i];
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulNumberFriendOkTwix) {
+  int i = GetParam();
+  double num = 2.f;
+  EMatrix test_matrix = num * TestsEnvironment::ut_matr_arr_[i];
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+}
+
+
 //=============================================================================
 // EMatrix operator*(const EMatrix& other);
 //=============================================================================
 
-TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrThrowInvalidArgFirst) {
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixThrowInvalidArgFirst) {
   int i = GetParam();
   EMatrix test_matrix;  // matrix_ = nullptr
 
@@ -131,7 +171,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrThrowInvalidArgFirst) {
                std::invalid_argument);
 }
 
-TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrThrowInvalidArgSecond) {
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixThrowInvalidArgSecond) {
   int i = GetParam();
   EMatrix test_matrix;  // matrix_ = nullptr
 
@@ -139,7 +179,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrThrowInvalidArgSecond) {
                std::invalid_argument);
 }
 
-TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrThrowRangeErr) {
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixThrowRangeErr) {
   int i = GetParam();
   int rows = TestsEnvironment::ut_matr_arr_[i].get_cols() + 1;
   int cols = TestsEnvironment::ut_matr_arr_[i].get_rows();
@@ -149,7 +189,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrThrowRangeErr) {
                std::range_error);
 }
 
-TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrNillsOk) {
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixNillsOk) {
   int i = GetParam();
   int rows = TestsEnvironment::ut_matr_arr_[i].get_cols();
   int cols = TestsEnvironment::ut_matr_arr_[i].get_rows();
@@ -160,7 +200,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrNillsOk) {
   EXPECT_TRUE(test_res_matrix.EqMatrix(test_matrix_nills));
 }
 
-TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrUnityThrowRangeErr) {
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixUnityThrowRangeErr) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matr_number_;
   EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
@@ -172,7 +212,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrUnityThrowRangeErr) {
   }
 }
 
-TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrUnityOk) {
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMulMatrixUnityOk) {
   int i = GetParam();
   int n = TestsEnvironment::uform_matr_number_;
   EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
@@ -187,7 +227,7 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMultMatrUnityOk) {
 
 
 //=============================================================================
-// operator()(int row, int col) const;
+// operator==(int row, int col) const;
 //=============================================================================
 
 TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorEqMatrixTrue) {
@@ -220,6 +260,124 @@ TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorEqMatrixFalseCols) {
   EMatrix test_matrix(rows, cols + 1);
 
   EXPECT_FALSE(TestsEnvironment::ut_matr_arr_[i] == test_matrix);
+}
+
+
+//=============================================================================
+// EMatrix operator+=(const EMatrix& other);
+//=============================================================================
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignThrowInvalidArg) {
+  int i = GetParam();
+  EMatrix test_matrix;
+
+  EXPECT_THROW(test_matrix += TestsEnvironment::ut_matr_arr_[i],
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignThrowRangeErr1) {
+  int i = GetParam();
+  EMatrix test_matrix;
+
+  EXPECT_THROW(TestsEnvironment::ut_matr_arr_[i] += test_matrix,
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignThrowRangeErr2) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
+  EMatrix test_matrix(rows + 1, cols);
+
+  EXPECT_THROW(test_matrix += TestsEnvironment::ut_matr_arr_[i],
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignThrowRangeErr3) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
+  EMatrix test_matrix(rows, cols + 1);
+
+  EXPECT_THROW(test_matrix += TestsEnvironment::ut_matr_arr_[i],
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignOk0) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
+  EMatrix test_matrix(rows, cols);
+  test_matrix += TestsEnvironment::ut_matr_arr_[i];
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorPlusAssignOk1) {
+  int i = GetParam();
+  EMatrix test_matrix(TestsEnvironment::ut_matr_arr_[i]);
+  test_matrix += TestsEnvironment::ut_matr_arr_[i];
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_x2_arr_[i]));
+}
+
+//=============================================================================
+// EMatrix operator-=(const EMatrix& other);
+//=============================================================================
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignThrowInvalidArg) {
+  int i = GetParam();
+  EMatrix test_matrix;
+
+  EXPECT_THROW(test_matrix -= TestsEnvironment::ut_matr_arr_[i],
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignThrowRangeErr1) {
+  int i = GetParam();
+  EMatrix test_matrix;
+
+  EXPECT_THROW(TestsEnvironment::ut_matr_arr_[i] -= test_matrix,
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignThrowRangeErr2) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
+  EMatrix test_matrix(rows + 1, cols);
+
+  EXPECT_THROW(test_matrix -= TestsEnvironment::ut_matr_arr_[i],
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignThrowRangeErr3) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
+  EMatrix test_matrix(rows, cols + 1);
+
+  EXPECT_THROW(test_matrix -= TestsEnvironment::ut_matr_arr_[i],
+               std::range_error);
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignOk0) {
+  int i = GetParam();
+  int rows = TestsEnvironment::ut_matr_arr_[i].get_rows();
+  int cols = TestsEnvironment::ut_matr_arr_[i].get_cols();
+  EMatrix test_matrix(rows, cols);
+  EMatrix test_res_matrix = TestsEnvironment::ut_matr_arr_[i];
+  test_res_matrix -= test_matrix;
+
+  EXPECT_TRUE(test_res_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
+}
+
+TEST_P(EMatrixOperatorsOverloadsTSuite, OperatorMinusAssignOk1) {
+  int i = GetParam();
+  EMatrix test_matrix(TestsEnvironment::ut_matr_x2_arr_[i]);
+  test_matrix -= TestsEnvironment::ut_matr_arr_[i];
+
+  EXPECT_TRUE(test_matrix.EqMatrix(TestsEnvironment::ut_matr_arr_[i]));
 }
 
 
