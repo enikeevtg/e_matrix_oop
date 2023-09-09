@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "../e_matrix_oop.h"
 
 namespace e_matrix {
@@ -8,14 +10,12 @@ void EMatrix::CreateMatrix() {
       (size_t)rows_ * sizeof(double*) + inline_size_ * sizeof(double);
   matrix_ = (double**)operator new[](malloc_sz);
 
-  if (matrix_ != nullptr) {
-    double* start = (double*)matrix_ + rows_;
-    for (int i = 0; i < rows_; ++i) {
-      matrix_[i] = start + i * cols_;
-    }
-    for (size_t i = 0; i < inline_size_; ++i) {
-      matrix_[0][i] = 0;
-    }
+  double* start = (double*)matrix_ + rows_;
+  for (int i = 0; i < rows_; ++i) {
+    matrix_[i] = start + i * cols_;
+  }
+  for (size_t i = 0; i < inline_size_; ++i) {
+    matrix_[0][i] = 0;
   }
 }
 
@@ -42,7 +42,7 @@ void EMatrix::Swap(EMatrix& other) noexcept {
 /// @param cur_row
 /// @param cur_col
 /// @return Minor matrix
-EMatrix EMatrix::CreateMinor(int cur_row, int cur_col) {
+EMatrix EMatrix::CreateMinor(int cur_row, int cur_col) const {
   EMatrix minor(rows_ - 1, cols_ - 1);
   int k = 0;
   for (int i = 0; i < rows_; ++i) {

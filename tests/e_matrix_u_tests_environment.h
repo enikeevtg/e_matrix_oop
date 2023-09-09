@@ -1,5 +1,5 @@
-#ifndef E_MATRIXPLUS_TESTS_TESTS_ENV_H_
-#define E_MATRIXPLUS_TESTS_TESTS_ENV_H_
+#ifndef E_MATRIX_OOP_TESTS_TESTS_ENVIRONMENT_H_
+#define E_MATRIX_OOP_TESTS_TESTS_ENVIRONMENT_H_
 
 #include <gtest/gtest.h>
 
@@ -46,4 +46,4 @@ class TestsEnvironment : public ::testing::Environment {
 
 }  // namespace e_matrix
 
-#endif  // E_MATRIXPLUS_TESTS_TESTS_ENV_H_
+#endif  // E_MATRIX_OOP_TESTS_TESTS_ENVIRONMENT_H_

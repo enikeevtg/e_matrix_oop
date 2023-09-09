@@ -1,8 +1,5 @@
-#ifndef E_MATRIXPLUS_E_MATRIX_OOP_H_
-#define E_MATRIXPLUS_E_MATRIX_OOP_H_
-
-#include <iostream>
-#include <stdexcept>
+#ifndef E_MATRIX_OOP_E_MATRIX_OOP_H_
+#define E_MATRIX_OOP_E_MATRIX_OOP_H_
 
 namespace e_matrix {
 
@@ -23,47 +20,47 @@ class EMatrix {
   void set_rows(int rows);
   void set_cols(int cols);
 
-  bool EqMatrix(const EMatrix& other) noexcept;
+  bool EqMatrix(const EMatrix& other) const noexcept;
   void SumMatrix(const EMatrix& other);
   void SubMatrix(const EMatrix& other);
   void MulNumber(const double num) noexcept;
   void MulMatrix(const EMatrix& other);
   EMatrix Transpose() noexcept;
-  EMatrix CalcComplements();
-  double Determinant();
+  EMatrix CalcComplements() const;
+  double Determinant() const;
   EMatrix InverseMatrix();
 
-  EMatrix operator+(const EMatrix& other);
-  EMatrix operator-(const EMatrix& other);
-  EMatrix operator*(const double& num);
-  friend EMatrix operator*(const double& num, EMatrix& matrix);
-  EMatrix operator*(const EMatrix& other);
-  bool operator==(const EMatrix& other) noexcept;
+  EMatrix operator+(const EMatrix& other) const;
+  EMatrix operator-(const EMatrix& other) const;
+  EMatrix operator*(const double& num) const;
+  friend EMatrix operator*(const double& num, const EMatrix& matrix);
+  EMatrix operator*(const EMatrix& other) const;
+  bool operator==(const EMatrix& other) const noexcept;
   void operator+=(const EMatrix& other);
   void operator-=(const EMatrix& other);
   void operator*=(const double& num) noexcept;
   void operator*=(const EMatrix& other);
-  double& operator()(int row, int column) const;
+  double operator()(int row, int column) const;
+  double& operator()(int row, int column);
 
   void SetDimensions(int rows, int cols);
-  void PrintMatrix() noexcept;
-  // double** get_matrix();  // TMP METHOD
+  void PrintMatrix() const noexcept;
 
  private:
+  void CreateMatrix();
+  void DeleteMatrix() noexcept;
+  void Swap(EMatrix& other) noexcept;
+  EMatrix CreateMinor(int cur_row, int cur_col) const;
+  bool BareissReducingAlgorithm();
+  bool ExchangeCurrentRow(int row_col);
+  void ReducingIterationStep(int row_col, double pivot);
+
   double** matrix_{nullptr};
   int rows_{0};
   int cols_{0};
   size_t inline_size_{0};
-
-  void CreateMatrix();
-  void DeleteMatrix() noexcept;
-  void Swap(EMatrix& other) noexcept;
-  EMatrix CreateMinor(int cur_row, int cur_col);
-  bool BareissReducingAlgorithm();
-  bool ExchangeCurrentRow(int row_col);
-  void ReducingIterationStep(int row_col, double pivot);
 };
 
 }  // namespace e_matrix
 
-#endif  // E_MATRIXPLUS_E_MATRIX_OOP_H_
+#endif  // E_MATRIX_OOP_E_MATRIX_OOP_H_

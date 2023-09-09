@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "../e_matrix_oop.h"
 
 namespace e_matrix {
@@ -16,7 +18,7 @@ void EMatrix::SetDimensions(int rows, int cols) {
   Swap(buffer_matrix);
 }
 
-void EMatrix::PrintMatrix() noexcept {
+void EMatrix::PrintMatrix() const noexcept {
   if (matrix_) {
     std::cout << this << ":" << std::endl;
     std::cout << "\t" << matrix_ << ":" << std::endl;

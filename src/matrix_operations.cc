@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "../e_matrix_oop.h"
 
 namespace e_matrix {
@@ -5,15 +7,16 @@ namespace e_matrix {
 /// @brief Checks matrices for equality with each other
 /// @param other
 /// @return Checking result: equal - 1, not equal - 0
-bool EMatrix::EqMatrix(const EMatrix& other) noexcept {
+bool EMatrix::EqMatrix(const EMatrix& other) const noexcept {
   if (rows_ != other.rows_ || cols_ != other.cols_) return false;
 
-  bool check = true;
-  for (size_t i = 0; check == true && i < inline_size_; ++i) {
-    if (std::abs(matrix_[0][i] - other.matrix_[0][i]) > EPS) check = false;
+  for (size_t i = 0; i < inline_size_; ++i) {
+    if (std::abs(matrix_[0][i] - other.matrix_[0][i]) > EPS) {
+      return false;
+    }
   }
 
-  return check;
+  return true;
 }
 
 /// @brief Adds the other matrix to the current one
@@ -95,7 +98,7 @@ EMatrix EMatrix::Transpose() noexcept {
 /// @brief Calculates the algebraic addition matrix of the current one and
 /// returns it
 /// @return Algebraic addition matrix
-EMatrix EMatrix::CalcComplements() {
+EMatrix EMatrix::CalcComplements() const {
   if (rows_ != cols_ || rows_ == 0 || cols_ == 0) {
     throw std::range_error("CalComplements(): the matrix is not square");
   }
@@ -116,7 +119,7 @@ EMatrix EMatrix::CalcComplements() {
 
 /// @brief Calculates and returns the determinant of the current matrix
 /// @return Matrix determinant
-double EMatrix::Determinant() {
+double EMatrix::Determinant() const {
   if (rows_ != cols_ || rows_ == 0 || cols_ == 0) {
     throw std::range_error("Determinant(): the matrix is not square");
   }
