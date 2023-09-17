@@ -18,6 +18,26 @@ void EMatrix::SetDimensions(int rows, int cols) {
   Swap(buffer_matrix);
 }
 
+/// @brief Matrix minor creation method
+/// @param cur_row
+/// @param cur_col
+/// @return Minor matrix
+EMatrix EMatrix::CreateMinor(int cur_row, int cur_col) const {
+  EMatrix minor(rows_ - 1, cols_ - 1);
+  int k = 0;
+  for (int i = 0; i < rows_; ++i) {
+    for (int j = 0; j < cols_; ++j) {
+      if (!(i == cur_row - 1 || j == cur_col - 1)) {  // -1 to CreateMinor()
+                                                      // origin with (1, 1)
+        minor.matrix_[0][k] = matrix_[i][j];
+        ++k;
+      }
+    }
+  }
+
+  return minor;
+}
+
 void EMatrix::PrintMatrix() const noexcept {
   if (matrix_) {
     std::cout << this << ":" << std::endl;

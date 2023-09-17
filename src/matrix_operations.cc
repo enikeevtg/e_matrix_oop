@@ -82,7 +82,7 @@ void EMatrix::MulMatrix(const EMatrix& other) {
 
 /// @brief Creates a new transposed matrix from the current one and returns it
 /// @return Transposed matrix
-EMatrix EMatrix::Transpose() noexcept {
+EMatrix EMatrix::Transpose() const noexcept {
   EMatrix result(cols_, rows_);
   if (matrix_ != nullptr) {
     for (int i = 0; i < result.rows_; ++i) {
@@ -107,7 +107,9 @@ EMatrix EMatrix::CalcComplements() const {
   if (result.rows_ > 1) {
     for (int i = 0; i < rows_; ++i) {
       for (int j = 0; j < cols_; ++j) {
-        EMatrix minor_ij = this->CreateMinor(i, j);
+        EMatrix minor_ij = this->CreateMinor(i + 1, j + 1);  // +1 cause
+                                                             // CreateMinor()
+                                                             // origin is (1, 1)
         result.matrix_[i][j] = minor_ij.Determinant();
         if ((i + j) % 2 == 1) result.matrix_[i][j] *= -1;
       }
@@ -131,7 +133,7 @@ double EMatrix::Determinant() const {
   return det;
 }
 
-EMatrix EMatrix::InverseMatrix() {
+EMatrix EMatrix::InverseMatrix() const {
   double det = Determinant();
   if (std::abs(det) < EPS) {
     throw std::invalid_argument("InverseMatrix(): matrix determinant is nill");

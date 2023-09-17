@@ -28,7 +28,7 @@ EMatrix EMatrix::operator*(const double& num) const {
   return matrix;
 }
 
-EMatrix operator*(const double& num, EMatrix& matrix) {
+EMatrix operator*(const double& num, const EMatrix& matrix) {
   return matrix * num;
 }
 
@@ -44,7 +44,7 @@ void EMatrix::operator*=(const double& num) noexcept { MulNumber(num); }
 
 void EMatrix::operator*=(const EMatrix& other) { MulMatrix(other); }
 
-double EMatrix::operator()(int row, int column) const {
+double& EMatrix::operator()(int row, int column) {
   if (row < 1 || column < 1 || row > rows_ || column > cols_) {
     throw std::out_of_range("Matrix(i, j): index is outside the matrix");
   }
@@ -52,7 +52,7 @@ double EMatrix::operator()(int row, int column) const {
   return matrix_[row - 1][column - 1];
 }
 
-double& EMatrix::operator()(int row, int column) {
+double EMatrix::operator()(int row, int column) const {
   if (row < 1 || column < 1 || row > rows_ || column > cols_) {
     throw std::out_of_range("Matrix(i, j): index is outside the matrix");
   }

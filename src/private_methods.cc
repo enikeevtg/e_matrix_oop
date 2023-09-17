@@ -38,25 +38,6 @@ void EMatrix::Swap(EMatrix& other) noexcept {
   std::swap(inline_size_, other.inline_size_);
 }
 
-/// @brief Matrix minor creation method
-/// @param cur_row
-/// @param cur_col
-/// @return Minor matrix
-EMatrix EMatrix::CreateMinor(int cur_row, int cur_col) const {
-  EMatrix minor(rows_ - 1, cols_ - 1);
-  int k = 0;
-  for (int i = 0; i < rows_; ++i) {
-    for (int j = 0; j < cols_; ++j) {
-      if (!(i == cur_row || j == cur_col)) {
-        minor.matrix_[0][k] = matrix_[i][j];
-        ++k;
-      }
-    }
-  }
-
-  return minor;
-}
-
 /// @brief Bareiss reducing algorithm for matrix determinant calculation
 /// @return Reducing success/error status
 bool EMatrix::BareissReducingAlgorithm() {

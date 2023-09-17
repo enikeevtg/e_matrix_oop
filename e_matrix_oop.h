@@ -1,6 +1,8 @@
 #ifndef E_MATRIX_OOP_E_MATRIX_OOP_H_
 #define E_MATRIX_OOP_E_MATRIX_OOP_H_
 
+#include <iostream>
+
 namespace e_matrix {
 
 #define EPS 1e-7
@@ -25,10 +27,10 @@ class EMatrix {
   void SubMatrix(const EMatrix& other);
   void MulNumber(const double num) noexcept;
   void MulMatrix(const EMatrix& other);
-  EMatrix Transpose() noexcept;
+  EMatrix Transpose() const noexcept;
   EMatrix CalcComplements() const;
   double Determinant() const;
-  EMatrix InverseMatrix();
+  EMatrix InverseMatrix() const;
 
   EMatrix operator+(const EMatrix& other) const;
   EMatrix operator-(const EMatrix& other) const;
@@ -40,17 +42,17 @@ class EMatrix {
   void operator-=(const EMatrix& other);
   void operator*=(const double& num) noexcept;
   void operator*=(const EMatrix& other);
-  double operator()(int row, int column) const;
   double& operator()(int row, int column);
+  double operator()(int row, int column) const;
 
   void SetDimensions(int rows, int cols);
+  EMatrix CreateMinor(int cur_row, int cur_col) const;
   void PrintMatrix() const noexcept;
 
  private:
   void CreateMatrix();
   void DeleteMatrix() noexcept;
   void Swap(EMatrix& other) noexcept;
-  EMatrix CreateMinor(int cur_row, int cur_col) const;
   bool BareissReducingAlgorithm();
   bool ExchangeCurrentRow(int row_col);
   void ReducingIterationStep(int row_col, double pivot);
