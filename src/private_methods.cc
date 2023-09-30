@@ -21,12 +21,12 @@ void EMatrix::CreateMatrix() {
 
 /// @brief Matrix deletion method
 void EMatrix::DeleteMatrix() noexcept {
-  if (matrix_ != nullptr) {
-    operator delete[](matrix_);
-    matrix_ = nullptr;
-    rows_ = 0;
-    cols_ = 0;
-  }
+  // if (matrix_ != nullptr) {
+  operator delete[](matrix_);
+  //   matrix_ = nullptr;
+  //   rows_ = 0;
+  //   cols_ = 0;
+  // }
 }
 
 /// @brief Matrices swapping
